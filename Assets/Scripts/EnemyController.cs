@@ -52,7 +52,7 @@ public class EnemyController : MonoBehaviour, IInteractable
     private IEnumerator DamageVisualRoutine()
     {   
         _meshRenderer.material.color = Color.yellow;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.25f);
         _meshRenderer.material.color = originalColor;
     }
 }

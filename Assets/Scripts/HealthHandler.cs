@@ -26,13 +26,17 @@ public class HealthHandler : MonoBehaviour
     public bool TakeDamage(float damage)
     {
         _health -= damage;
-        float healthPercent = _health / _maxHealth;
-        _image.color = Color.Lerp(Color.red,Color.green, healthPercent);
+
         if (_health <= _minHealth)
         {
             _health = _minHealth;
             return false;
         }
+
+        // stopping over healing;
+        if(_health > _maxHealth) _health = _maxHealth;
+        float healthPercent = _health / _maxHealth;
+        _image.color = Color.Lerp(Color.red, Color.green, healthPercent);
         return true;
     }
 
