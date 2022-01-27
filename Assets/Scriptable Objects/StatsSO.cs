@@ -7,6 +7,8 @@ public class StatsSO : ScriptableObject
 {
     public HealthStats HealthStats;
     public AttackStats AttackStats;
+    public EnemyController EnemyPrefab;
+    public Vector3 SpawnPosition;
 }
 
 [System.Serializable]

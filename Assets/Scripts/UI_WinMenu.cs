@@ -10,8 +10,8 @@ public class UI_WinMenu : MonoBehaviour
         SceneManager.LoadScene("TestGrounds");
     }
 
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
+    //public void QuitGame()
+    //{
+    //    Application.Quit();
+    //}
 }

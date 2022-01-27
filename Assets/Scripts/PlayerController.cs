@@ -16,12 +16,9 @@ public class PlayerController : MonoBehaviour
     private float _gunRange;
     [SerializeField]
     private float _fireRateCoolDown;
-    private bool CheckLeftClickAvailable;
     private float _nextAvailableLeftClick;
     [SerializeField]
     private float _leftShotValue;
-
-    private bool _isRightClickAvailable;
     private float _nextAvailableRightClick;
     [SerializeField]
     private float _rightShotValue;
@@ -35,7 +32,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _camera = GetComponentInChildren<Camera>();
-        _isRightClickAvailable = true;
         _nextAvailableLeftClick = float.MinValue;
         _nextAvailableRightClick = float.MinValue;
     }
