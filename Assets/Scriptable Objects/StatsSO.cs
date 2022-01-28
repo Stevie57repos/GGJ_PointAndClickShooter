@@ -9,6 +9,7 @@ public class StatsSO : ScriptableObject
     public AttackStats AttackStats;
     public EnemyController EnemyPrefab;
     public Vector3 SpawnPosition;
+    public UnitType Type;
 }
 
 [System.Serializable]
@@ -23,3 +24,5 @@ public struct AttackStats
     public float Damage;
     public float AttackChargeTime;
 }
+
+public enum UnitType { Enemy, Ally };
