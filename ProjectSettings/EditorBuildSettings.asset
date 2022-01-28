@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FiringTest.unity
     guid: 4e8a218695ee3274c920cfa69ad3763e
+  - enabled: 1
+    path: Assets/Scenes/CameraTrackTesting.unity
+    guid: 51e4a80a847a42049824c660182aa79b
   - enabled: 1
     path: Assets/Scenes/Lose.unity
     guid: 76c824f243f357d498e90f7e0faf898c

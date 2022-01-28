@@ -7,7 +7,7 @@ public class UI_WinMenu : MonoBehaviour
 {
     public void LoadLevel()
     {
-        SceneManager.LoadScene("TestGrounds");
+        SceneManager.LoadScene("CameraTrackTesting");
     }
 
     //public void QuitGame()
