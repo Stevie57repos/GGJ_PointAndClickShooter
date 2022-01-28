@@ -6,16 +6,9 @@ using UnityEngine.UI;
 public class HealthHandler : MonoBehaviour
 {
     [SerializeField]
-    private float _health;
-    private float _minHealth = 0f;
-    private float _maxHealth;
-    [SerializeField]
-    private Image _image;
-
-    private void Awake()
-    {
-        _image.color = Color.green;
-    }
+    protected float _health;
+    protected float _minHealth = 0f;
+    protected float _maxHealth;
 
     public void Setup(StatsSO stats)
     {
@@ -25,23 +18,28 @@ public class HealthHandler : MonoBehaviour
 
     public bool TakeDamage(float damage)
     {
-        _health -= damage;
-
-        if (_health <= _minHealth)
+        if (_health - damage <= _minHealth)
         {
             _health = _minHealth;
+            UpdateHealthUI(damage);
             return false;
         }
 
+        _health -= damage;
         // stopping over healing;
-        if(_health > _maxHealth) _health = _maxHealth;
-        float healthPercent = _health / _maxHealth;
-        _image.color = Color.Lerp(Color.red, Color.green, healthPercent);
+        if (_health > _maxHealth) _health = _maxHealth;
+
+        UpdateHealthUI(damage);
         return true;
     }
 
     public bool HealthStatus()
     {
         return _health > 0;
+    }
+
+    protected virtual void UpdateHealthUI(float damage)
+    {
+
     }
 }

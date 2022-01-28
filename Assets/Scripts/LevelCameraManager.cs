@@ -14,6 +14,8 @@ public class LevelCameraManager : MonoBehaviour
     private float _cameraDollySpeed;
     [SerializeField]
     private EnemyDeathEventSO _enemyDeathEventChannel;
+    [SerializeField]
+    private List<int> targetPositionsList = new List<int>();
 
     private void OnEnable()
     {
@@ -43,7 +45,9 @@ public class LevelCameraManager : MonoBehaviour
     }
 
     private IEnumerator MovePositionRoutine(CinemachineDollyCart cart)
-    {        
+    {   
+        
+
         while(cart.m_Position < _targetPosition)
         {
             float newPosition = Mathf.Lerp(_targetPosition - 1, _targetPosition, _positionPercentage);

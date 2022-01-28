@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5246213275441295373}
   - component: {fileID: 5246213275441295378}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Health Bar UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,8 +189,8 @@ GameObject:
   - component: {fileID: 6815074837522389696}
   - component: {fileID: 6815074837522389697}
   - component: {fileID: 6815074837522389698}
-  - component: {fileID: 5203577434510892236}
   - component: {fileID: 6815074837522389757}
+  - component: {fileID: 6134747697731376674}
   m_Layer: 0
   m_Name: FriendlyUnit
   m_TagString: Untagged
@@ -278,20 +278,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5203577434510892236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6815074837522389699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87328e94acf616f42a951682c98c9e24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 0
-  _image: {fileID: 5246213275441295378}
 --- !u!114 &6815074837522389757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,3 +292,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _UICanvas: {fileID: 5246213275454325864}
   _stats: {fileID: 11400000, guid: 05dae59a2564938448fedc84e3088940, type: 2}
+--- !u!114 &6134747697731376674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6815074837522389699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f626c228d7e80a459e48ab6c6efb3f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 0
+  _image: {fileID: 5246213275441295378}

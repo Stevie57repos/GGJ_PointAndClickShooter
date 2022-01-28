@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(HealthHandler))]
+[RequireComponent(typeof(UnitHealthHandler))]
 public class AllyController : MonoBehaviour, IInteractable
 {
     [SerializeField]
     private Canvas _UICanvas;
-    private HealthHandler _healthHandler;
+    private UnitHealthHandler _unitHealthHandler;
     private MeshRenderer _meshRenderer;
     [SerializeField]
     private StatsSO _stats;
@@ -17,8 +17,8 @@ public class AllyController : MonoBehaviour, IInteractable
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         originalColor = _meshRenderer.material.color;
-        _healthHandler = GetComponent<HealthHandler>();
-        _healthHandler.Setup(_stats);
+        _unitHealthHandler = GetComponent<UnitHealthHandler>();
+        _unitHealthHandler.Setup(_stats);
     }
 
     private void OnEnable()
@@ -27,13 +27,13 @@ public class AllyController : MonoBehaviour, IInteractable
     }
     public void LeftClick(float heal)
     {
-        _healthHandler.TakeDamage(heal);
+        _unitHealthHandler.TakeDamage(heal);
         StartCoroutine(DamageVisualRoutine());
     }
 
     public void RightClick(float damage)
     {
-        bool isAlive = _healthHandler.TakeDamage(damage);
+        bool isAlive = _unitHealthHandler.TakeDamage(damage);
         if (isAlive)
         {
             StartCoroutine(DamageVisualRoutine());

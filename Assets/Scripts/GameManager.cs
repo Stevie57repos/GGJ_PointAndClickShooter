@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private PlayerLoseEventChannel _playerLoseEventChannel;
 
+    [SerializeField]
+    private Transform _player;
+
     private void OnEnable()
     {
         _playerWinEventChannel.PlayerWinEvent += PlayerWin;

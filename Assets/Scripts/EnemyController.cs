@@ -3,25 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(HealthHandler))]
+[RequireComponent(typeof(UnitHealthHandler))]
 public class EnemyController : MonoBehaviour, IInteractable
 {
     [SerializeField]
     private Canvas _UICanvas;   
-    private HealthHandler _healthHandler;
+    private UnitHealthHandler _unitHealthHandler;
     private MeshRenderer _meshRenderer;
     [SerializeField]
     private StatsSO _stats;
     Color originalColor;
     [SerializeField]
     private EnemyDeathEventSO _enemyDeathEventChannel;
+    [SerializeField]
+    private Transform _player;
 
     private void Awake()
     {
-        _meshRenderer = GetComponent<MeshRenderer>();
+        _meshRenderer = GetComponentInChildren<MeshRenderer>();
          originalColor = _meshRenderer.material.color;
-        _healthHandler = GetComponent<HealthHandler>();
-        _healthHandler.Setup(_stats);
+        _unitHealthHandler = GetComponent<UnitHealthHandler>();
+        _unitHealthHandler.Setup(_stats);
+    }
+
+    public void SetUp(Transform player)
+    {
+        _player = player;
+        transform.LookAt(player);
     }
 
     private void OnEnable()
@@ -31,13 +39,13 @@ public class EnemyController : MonoBehaviour, IInteractable
 
     public void LeftClick(float heal)
     {
-        _healthHandler.TakeDamage(heal);
+        _unitHealthHandler.TakeDamage(heal);
         StartCoroutine(DamageVisualRoutine());   
     }
 
     public void RightClick(float damage)
     {
-        bool isAlive = _healthHandler.TakeDamage(damage);
+        bool isAlive = _unitHealthHandler.TakeDamage(damage);
         if (isAlive)
         {
             StartCoroutine(DamageVisualRoutine());

@@ -12,6 +12,8 @@ public class FiringRangeEnemyManager : MonoBehaviour
     private Transform _enemySpawn;
     [SerializeField]
     private Transform _allySpawn;
+    [SerializeField]
+    private Transform _player;
 
     [SerializeField]
     private List<EnemyController> _enemiesList = new List<EnemyController>();
@@ -55,6 +57,7 @@ public class FiringRangeEnemyManager : MonoBehaviour
         {
             EnemyController enemy = Instantiate(_enemyPrefab);
             enemy.transform.position = spawnPos;
+            enemy.SetUp(_player);
             _enemiesList.Add(enemy);
             _listOfInteractables.Add(enemy);
             spawnPos.x += 2.5f;

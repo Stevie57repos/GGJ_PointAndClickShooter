@@ -42,6 +42,11 @@ public class PlayerController : MonoBehaviour
     private Transform BulletsParentUI;
     [SerializeField]
     private GameObject BulletsUI;
+    [Header("Health Settings")]
+    [SerializeField]
+    private PlayerHealthHandler _healthHandler;
+    [SerializeField]
+    private StatsSO _statsSO;
 
     private void Awake()
     {
@@ -51,8 +56,13 @@ public class PlayerController : MonoBehaviour
         _camera = GetComponentInChildren<Camera>();
         _nextAvailableLeftClick = float.MinValue;
         _nextAvailableRightClick = float.MinValue;
-        SetupBulletsUI();
 
+        _healthHandler.Setup(_statsSO);
+    }
+
+    private void Start()
+    {
+        SetupBulletsUI();
     }
 
     private void OnEnable()
@@ -87,7 +97,6 @@ public class PlayerController : MonoBehaviour
         bool isReloading = context.ReadValueAsButton();
         if (isReloading)
         {
-            print($"reload pressed");
             _nextAvailableLeftClick = Time.time + _reloadTime;
             foreach(var bullet in _bulletsList)
             {
@@ -192,5 +201,11 @@ public class PlayerController : MonoBehaviour
     private bool CheckBulletCount()
     {
         return _currentBullets > 0;
+    }
+
+    [ContextMenu("Take 1 damage")]
+    public void DebugTestPlayerDamage()
+    {
+        _healthHandler.TakeDamage(1f);
     }
 }
