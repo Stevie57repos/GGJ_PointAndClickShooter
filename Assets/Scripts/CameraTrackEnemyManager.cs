@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class CameraTrackEnemyManager : MonoBehaviour
 {
     [SerializeField]
     private EnemyController _enemyPrefab;
@@ -21,24 +21,9 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private PlayerWinEventSO _playerWinEventChannel;
 
-    [SerializeField]
-    private int _numberOfEnemies;
-
     private void Start()
     {
         SpawnEnemiesCameraTest();
-    }
-
-    private void SpawnEnemiesInLine(int Number)
-    {
-        Vector3 spawnPos = _spawn.position;
-        for(int i = 0; i < Number; i++)
-        {
-            EnemyController enemy = Instantiate(_enemyPrefab);
-            enemy.transform.position = spawnPos;
-            _enemiesList.Add(enemy);
-            spawnPos.x += 2.5f;
-        }
     }
 
     private void SpawnEnemiesCameraTest()
@@ -51,8 +36,6 @@ public class EnemyManager : MonoBehaviour
             _enemiesList.Add(enemy);
         }
     }
-
-
     private void OnEnable()
     {
         _enemyDeathChannel.EnemyDeathEvent += EnemyDeathRemoval;

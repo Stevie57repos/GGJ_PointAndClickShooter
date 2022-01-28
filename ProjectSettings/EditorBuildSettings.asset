@@ -8,18 +8,21 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FiringTest.unity
     guid: 4e8a218695ee3274c920cfa69ad3763e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CameraTrackTesting.unity
     guid: 51e4a80a847a42049824c660182aa79b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Lose.unity
     guid: 76c824f243f357d498e90f7e0faf898c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Win.unity
     guid: 5d9498283b4ece74ea9b69c87344a4b6
+  - enabled: 1
+    path: Assets/Scenes/Level.unity
+    guid: 545f423cb8f03b04ab4f920a7acda5c3
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f34b33dcf85f7bd429b72511d6210314,
       type: 2}

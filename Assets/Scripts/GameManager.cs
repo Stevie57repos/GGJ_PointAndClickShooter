@@ -6,13 +6,21 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private PlayerWinEventSO _playerWinEventChannel;
+    private LevelCameraManager _levelCamManager;
 
+    [Header("Event Channels")]
+    [SerializeField]
+    private PlayerWinEventSO _playerWinEventChannel;
     [SerializeField]
     private PlayerLoseEventChannel _playerLoseEventChannel;
 
     [SerializeField]
     private Transform _player;
+
+    private void Start()
+    {
+        _levelCamManager.NextCameraPosition();
+    }
 
     private void OnEnable()
     {
@@ -27,6 +35,8 @@ public class GameManager : MonoBehaviour
     }
 
 
+    #region Debug Context Menu Test Methods
+
     [ContextMenu("Lose Now")]
     public void PlayerLose()
     {
@@ -38,4 +48,5 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Win", LoadSceneMode.Additive);
     }
+    #endregion
 }
