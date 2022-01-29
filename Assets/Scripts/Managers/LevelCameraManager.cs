@@ -12,6 +12,10 @@ public class LevelCameraManager : MonoBehaviour
     private int _previousPosition;
     private int _currentListPositionTracker;
     private float _positionPercentage = 0;
+
+    //testing
+    private float _startTime;
+    private float _timeBetweenShootouts = 5;
     [SerializeField]
     private float _cameraDollySpeed;
     [SerializeField]
@@ -29,11 +33,16 @@ public class LevelCameraManager : MonoBehaviour
         _previousPosition = 0;
         _currentListPositionTracker = 0;
         _targetPosition = _targetPositionsList[_currentListPositionTracker];
+        _startTime = Time.time;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(LevelWalkthroughRoutine(_cart));
     }
 
     public void NextCameraPosition()
     {
-
         StartCoroutine(MovePositionRoutine());
     }
 
@@ -46,9 +55,9 @@ public class LevelCameraManager : MonoBehaviour
     private IEnumerator MovePositionRoutine()
     {   
         while (_cart.m_Position < _targetPosition)
-        {
-            float newPosition = Mathf.Lerp(_previousPosition, _targetPosition, _positionPercentage);
+        {            
             _positionPercentage += _cameraDollySpeed;
+            float newPosition = Mathf.Lerp(_previousPosition, _targetPosition, _positionPercentage);
             _cart.m_Position = newPosition;
             yield return null;
         }
@@ -70,11 +79,18 @@ public class LevelCameraManager : MonoBehaviour
         {
             while (cart.m_Position < _targetPosition)
             {
+                // percentage over time
+
+                // original percentage
+                //_positionPercentage += _cameraDollySpeed;
+
+                _positionPercentage = (Time.time - _startTime) / _timeBetweenShootouts;
                 float newPosition = Mathf.Lerp(_previousPosition, _targetPosition, _positionPercentage);
-                _positionPercentage += _cameraDollySpeed;
                 _cart.m_Position = newPosition;
                 yield return null;
             }
+
+            // reset
             _positionPercentage = 0;
             _previousPosition = _targetPosition;
             _currentListPositionTracker++;
@@ -83,6 +99,7 @@ public class LevelCameraManager : MonoBehaviour
             else
                 _targetPosition = _targetPosition = _targetPositionsList[_currentListPositionTracker];
 
+            _startTime = Time.time; 
             yield return null;
         }
 

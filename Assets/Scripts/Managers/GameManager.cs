@@ -42,8 +42,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _unitSpawnManager.SpawnUnits(_levelCamManager.GetCurrentPosition());
-        _levelCamManager.NextCameraPosition();
+        //_unitSpawnManager.SpawnUnits(_levelCamManager.GetCurrentPosition());
+        //_levelCamManager.NextCameraPosition();
     }
 
     private void OnEnable()
