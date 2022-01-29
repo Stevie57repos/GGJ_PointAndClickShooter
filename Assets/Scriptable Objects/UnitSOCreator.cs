@@ -21,7 +21,22 @@ public class UnitSOCreator : MonoBehaviour
         StatsSO unit = ScriptableObject.CreateInstance<StatsSO>();
         unit.unitPrefab = EnemyPrefab;
         unit.SpawnPosition = transform.position;
-        AssetDatabase.CreateAsset(unit, "Assets/Scriptable Objects/Wave 2/newUnit.asset");
+        unit.Type = UnitType.Enemy;        
+        unit.HealthStats = GetComponent<EnemyController>().GetStats().HealthStats;
+        unit.AttackStats = GetComponent<EnemyController>().GetStats().AttackStats;
+        AssetDatabase.CreateAsset(unit, "Assets/Scriptable Objects/Wave 3/Unit.asset");
+    }
+
+    [ContextMenu("Create Ally Unit")]
+    public void CreateAllyUnitSO()
+    {
+        StatsSO unit = ScriptableObject.CreateInstance<StatsSO>();
+        unit.unitPrefab = AllyPrefab;
+        unit.SpawnPosition = transform.position;
+        unit.Type = UnitType.Ally;
+        unit.HealthStats = GetComponent<EnemyController>().GetStats().HealthStats;
+        unit.AttackStats = GetComponent<EnemyController>().GetStats().AttackStats;
+        AssetDatabase.CreateAsset(unit, "Assets/Scriptable Objects/Wave 1/Unit.asset");
     }
 
 #endif

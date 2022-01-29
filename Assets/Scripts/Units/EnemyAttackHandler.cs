@@ -14,8 +14,6 @@ public class EnemyAttackHandler : MonoBehaviour
     private float _attackChargeDuration;
     private MeshRenderer _meshRenderer;
     [SerializeField]
-    private Transform _player;
-    [SerializeField]
     private Color _startColor;
     [SerializeField]
     private Color _endColor;
@@ -25,10 +23,18 @@ public class EnemyAttackHandler : MonoBehaviour
     private EnemyProjectile _enemyProjectile;
     [SerializeField]
     private float _attackDamage;
+    private Transform _player;
     [SerializeField]
     private Transform _bulletSpawnPoint;
     [SerializeField]
     private float _projectileSpeed = 1f;
+    [SerializeField]
+    private float _targetRangeCheck;
+    [SerializeField]
+    private LayerMask _allyUnitsLayer;
+    private Transform _target;
+    [SerializeField]
+    Collider[] _colliders;
 
     private void OnEnable()
     {
@@ -36,21 +42,47 @@ public class EnemyAttackHandler : MonoBehaviour
             _meshRenderer = _targetingReticle.GetComponent<MeshRenderer>();
     }
 
-    public void Setup(float damage, Transform player)
+    private void Start()
     {
-        _player = player;
-        _attackDamage = damage;
-        _targetingReticle.transform.localScale = new Vector3(_startSize, _startSize, _startSize);
-        AimTowardsPlayer();
+        Setup(1, GameObject.FindGameObjectWithTag("Player").transform);
     }
 
-    private void AimTowardsPlayer()
+    public void Setup(float damage, Transform player)
     {
+        _attackDamage = damage;
+        _player = player;
+        SetTargetReticle();
+        FindTarget();
+        AttackTarget();
+    }
+
+    // Find Available Target prioritizing ally units
+    private void FindTarget()
+    {      
+        _colliders = Physics.OverlapSphere(transform.position, _targetRangeCheck, _allyUnitsLayer);
+
+        if (_colliders.Length == 0)
+        {
+            transform.LookAt(_player);
+            _target = _player;
+            print($"no targets found");
+        }
+        else
+        {
+            Transform allyUnit = _colliders[0].GetComponent<AllyController>().transform;
+            transform.LookAt(allyUnit);
+            _target = allyUnit;
+        }
+    }
+
+    private void SetTargetReticle()
+    {
+        _targetingReticle.transform.localScale = new Vector3(_startSize, _startSize, _startSize);
         Vector3 targetDireciton = (_player.position - transform.position).normalized * 1f;
         _targetingReticle.transform.position += targetDireciton;
     }
 
-    public void AttackPlayer()
+    public void AttackTarget()
     {
         _meshRenderer.material.color = _startColor;
         StartCoroutine(BeginAttackRoutine());
@@ -71,7 +103,7 @@ public class EnemyAttackHandler : MonoBehaviour
         }
         EnemyProjectile projectile = Instantiate(_enemyProjectile);
         projectile.transform.position = _bulletSpawnPoint.position;
-        projectile.LaunchProjectile(_player.position, _attackDamage, _projectileSpeed);
+        projectile.LaunchProjectile(_target.position, _attackDamage, _projectileSpeed);
     }
 
     private IEnumerator BeginAttackRoutine()
@@ -84,5 +116,13 @@ public class EnemyAttackHandler : MonoBehaviour
     public void Stop()
     {
         StopAllCoroutines();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Color sphere = Color.yellow;
+        sphere.a = 0.2f;
+        Gizmos.color = sphere;
+        Gizmos.DrawSphere(transform.position, _targetRangeCheck);
     }
 }

@@ -26,5 +26,10 @@ public class EnemyProjectile : MonoBehaviour
             other.transform.GetComponent<PlayerController>().TakeDamage(_projectileDamage);
             Destroy(this.gameObject);
         }
+        else if (other.gameObject.CompareTag("Ally"))
+        {
+            other.transform.GetComponent<AllyController>().TakeDamage(_projectileDamage);
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -50,4 +50,9 @@ public class AllyController : MonoBehaviour, IInteractable
         yield return new WaitForSeconds(0.1f);
         _meshRenderer.material.color = originalColor;
     }
+
+    public void TakeDamage(float damage)
+    {
+        _unitHealthHandler.TakeDamage(damage);
+    }
 }

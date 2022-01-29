@@ -398,12 +398,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetingReticle: {fileID: 1358236869}
-  _startSize: 4
-  _attackChargeDuration: 4
+  _startSize: 3
+  _attackChargeDuration: 2
   _player: {fileID: 0}
   _startColor: {r: 0.8962264, g: 0.66903484, b: 0, a: 1}
   _endColor: {r: 1, g: 0, b: 0, a: 1}
-  _attackDelay: 1
+  _attackDelay: 0.5
   _enemyProjectile: {fileID: 4897911494624254554, guid: d460e6e516711054aa0e108e3ac33ef3,
     type: 3}
   _attackDamage: 0

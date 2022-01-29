@@ -16,7 +16,10 @@ public class UnitSpawnManager : MonoBehaviour
     [SerializeField]
     private LevelEnemiesCleaeredEventSO _levelEnemiesClearedEventChannel;
     [SerializeField]
+    private PlayerWinEventSO _playerWinEventChannel;
+    [SerializeField]
     private bool _isWaveSpawningComplete;
+    private bool _isLastWave = false;
 
     private Transform _player;
 
@@ -36,15 +39,14 @@ public class UnitSpawnManager : MonoBehaviour
     }
 
     public void SpawnUnits(int currentPosition)
-    {
-        if (currentPosition == _unitWavesList.Count)
+    {     
+        if (currentPosition == _unitWavesList.Count - 1)
         {
-            print($"no more enemie waves");
-            _levelEnemiesClearedEventChannel.RaiseEvent();
-            return;
+            _isLastWave = true;
         };
 
         List<StatsSO> unitList = _unitWavesList[currentPosition].UnitList;
+
         _isWaveSpawningComplete = false;
         StartCoroutine(SpawnUnitsRoutine(unitList));
     }
@@ -64,12 +66,18 @@ public class UnitSpawnManager : MonoBehaviour
             yield return new WaitForSeconds(unitData.NextSpawnDelay);
         }
         _isWaveSpawningComplete = true;
+        if(_isLastWave && _enemiesList.Count == 0)
+            _playerWinEventChannel.RaiseEvent();
     }
 
     private void RemoveEnemy(EnemyController enemy)
     {
         _enemiesList.Remove(enemy);
-        if(_enemiesList.Count == 0 && _isWaveSpawningComplete)
+       
+        if (_isWaveSpawningComplete && _isLastWave && _enemiesList.Count == 0)
+            _playerWinEventChannel.RaiseEvent();
+
+        if (_enemiesList.Count == 0 && _isWaveSpawningComplete)
         {
             _clearedEnemyWaveEventChannel.RaiseEvent();
         }

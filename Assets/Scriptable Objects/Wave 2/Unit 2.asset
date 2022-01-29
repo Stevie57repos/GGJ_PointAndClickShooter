@@ -15,10 +15,10 @@ MonoBehaviour:
   Type: 0
   unitPrefab: {fileID: 183619689045447309, guid: 0f2f231335500ed419cd0c1b28c7d8f0,
     type: 3}
-  SpawnPosition: {x: -1.59, y: 4.31, z: 45.63}
+  SpawnPosition: {x: 6.24, y: 2, z: 39.35}
   NextSpawnDelay: 2
   HealthStats:
-    maxHealth: 0
+    maxHealth: 1
   AttackStats:
-    Damage: 0
-    AttackChargeTime: 0
+    Damage: 1
+    AttackChargeTime: 3

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[SelectionBase]
 [RequireComponent(typeof(UnitHealthHandler))]
 public class EnemyController : MonoBehaviour, IInteractable
 {
@@ -28,9 +29,8 @@ public class EnemyController : MonoBehaviour, IInteractable
 
     public void SetUp(Transform player)
     {
-        transform.LookAt(player);
         _attackHandler.Setup(_stats.AttackStats.Damage, player);
-        _attackHandler.AttackPlayer();
+        //_attackHandler.AttackPlayer();
     }
 
     private void OnEnable()
@@ -54,7 +54,8 @@ public class EnemyController : MonoBehaviour, IInteractable
         else
         {
             _enemyDeathEventChannel.RaiseEvent(this);
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
         }
     }
 
@@ -69,4 +70,10 @@ public class EnemyController : MonoBehaviour, IInteractable
     {
         StopAllCoroutines();
     }
+
+    public StatsSO GetStats()
+    {
+        return _stats;
+    }
+
 }

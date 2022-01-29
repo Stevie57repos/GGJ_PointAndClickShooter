@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
         else
         {
             //_unitSpawnManager.SpawnUnits(_levelCamManager.GetCurrentPosition());
+            _unitSpawnManager.SpawnUnits(_StartAtShootout);
             _levelCamManager.StartAtShootOut(_StartAtShootout);
         }
     }
@@ -117,9 +118,9 @@ public class GameManager : MonoBehaviour
 
     [ContextMenu("Win Now")]
     public void PlayerWin()
-    {
-        StopGame();
+    {        
         SceneManager.LoadScene("Win", LoadSceneMode.Additive);
+        StopGame();        
     }
 
     private void StopGame()

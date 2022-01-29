@@ -260,7 +260,7 @@ PrefabInstance:
     - target: {fileID: 6675309449081742711, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
         type: 3}
       propertyPath: m_Position
-      value: -2.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8253158336113449101, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
         type: 3}
@@ -471,6 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439dfc9ac00db0d458d5813c0bf6b1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _StartAtShootout: 0
   _player: {fileID: 560096714}
   _levelCamManager: {fileID: 846846581}
   _unitSpawnManager: {fileID: 846846584}
@@ -487,7 +488,6 @@ MonoBehaviour:
   _levelEndEventChannel: {fileID: 11400000, guid: 874b1cd14d9036c4aadadca563ab3ec0,
     type: 2}
   _isSpectateLevel: 0
-  _StartAtShootout: 0
   isEnemyWaveCleared: 0
   hasReachedTargetPosition: 0
 --- !u!4 &846846580
@@ -617,12 +617,15 @@ MonoBehaviour:
   _enemiesList: []
   _unitWavesList:
   - {fileID: 11400000, guid: 790c7dc5b6c3d3a45af9483c81e2aadc, type: 2}
-  - {fileID: 11400000, guid: 717e4852831638947ab3040b726bf366, type: 2}
+  - {fileID: 11400000, guid: 6981fafc03e9a4743b22b1f117532878, type: 2}
+  - {fileID: 11400000, guid: bba67487fe6862049b943a2c5a542679, type: 2}
   _enemyDeathEventChannel: {fileID: 11400000, guid: a4908406dc5a5d94d9b8fdd9953339b1,
     type: 2}
   _clearedEnemyWaveEventChannel: {fileID: 11400000, guid: 47d9aed0d96086148b72167064ef227d,
     type: 2}
   _levelEnemiesClearedEventChannel: {fileID: 11400000, guid: 63aa6e789d7468a468f001719d0e4c28,
+    type: 2}
+  _playerWinEventChannel: {fileID: 11400000, guid: 197f64e2e552ee64d8c47f5612f17ebe,
     type: 2}
   _isWaveSpawningComplete: 0
 --- !u!1001 &1218775606

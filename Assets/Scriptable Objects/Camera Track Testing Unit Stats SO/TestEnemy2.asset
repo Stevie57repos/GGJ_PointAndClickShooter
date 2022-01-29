@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ececffda4976d54f91789e70d6c12ac, type: 3}
   m_Name: TestEnemy2
   m_EditorClassIdentifier: 
+  Type: 0
+  unitPrefab: {fileID: 183619689045447309, guid: 0f2f231335500ed419cd0c1b28c7d8f0,
+    type: 3}
+  SpawnPosition: {x: 3.42, y: 1, z: 17.01}
+  NextSpawnDelay: 0
   HealthStats:
     maxHealth: 1
   AttackStats:
     Damage: 1
     AttackChargeTime: 3
-  EnemyPrefab: {fileID: 183619689045447280, guid: 0f2f231335500ed419cd0c1b28c7d8f0,
-    type: 3}
-  SpawnPosition: {x: 3.42, y: 1, z: 17.01}
