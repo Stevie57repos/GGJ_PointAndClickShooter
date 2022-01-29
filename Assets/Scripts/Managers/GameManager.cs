@@ -8,8 +8,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
+    private Transform _player;
+    [SerializeField]
     private LevelCameraManager _levelCamManager;
-
     [SerializeField]
     private UnitSpawnManager _unitSpawnManager;
 
@@ -25,15 +26,16 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private LevelEnemiesCleaeredEventSO _levelEnemiesClearedEvent;
     private bool _levelEnemiesCleared = false;
-
     [SerializeField]
-    private Transform _player;
+    private LevelEndEventSO _levelEndEventChannel;
 
+    [Header("Debugging")]
+    [SerializeField]
+    private bool _isSpectateLevel;
     [SerializeField]
     private bool isEnemyWaveCleared = false;
     [SerializeField]
     private bool hasReachedTargetPosition = false;
-
 
     private void Awake()
     {
@@ -42,8 +44,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //_unitSpawnManager.SpawnUnits(_levelCamManager.GetCurrentPosition());
-        //_levelCamManager.NextCameraPosition();
+        if (_isSpectateLevel) _levelCamManager.SpectateLevel();
+        else
+        {
+            //_unitSpawnManager.SpawnUnits(_levelCamManager.GetCurrentPosition());
+            _levelCamManager.NextCameraPosition();
+        }
     }
 
     private void OnEnable()
@@ -53,6 +59,7 @@ public class GameManager : MonoBehaviour
         _clearedEnemyWaveEventChannel.ClearedEnemyWaveEvent += ClearedEnemies;
         _reachedTargetPositionEventChannel.ReachedTargetPosition += AtTargetPosition;
         _levelEnemiesClearedEvent.ClearedlevelEnemiesEvent += AllEnemiesDead;
+        _levelEndEventChannel.LevelEndEvent += PlayerWin;
     }
 
     private void OnDisable()
@@ -62,6 +69,7 @@ public class GameManager : MonoBehaviour
         _clearedEnemyWaveEventChannel.ClearedEnemyWaveEvent -= ClearedEnemies;
         _reachedTargetPositionEventChannel.ReachedTargetPosition -= AtTargetPosition;
         _levelEnemiesClearedEvent.ClearedlevelEnemiesEvent -= AllEnemiesDead;
+        _levelEndEventChannel.LevelEndEvent -= PlayerWin;
     }
 
     private void AllEnemiesDead()
@@ -101,15 +109,15 @@ public class GameManager : MonoBehaviour
     [ContextMenu("Lose Now")]
     public void PlayerLose()
     {
-        SceneManager.LoadSceneAsync("Lose", LoadSceneMode.Additive);
         StopGame();
+        SceneManager.LoadSceneAsync("Lose", LoadSceneMode.Additive);
     }
 
     [ContextMenu("Win Now")]
     public void PlayerWin()
     {
-        SceneManager.LoadScene("Win", LoadSceneMode.Additive);
         StopGame();
+        SceneManager.LoadScene("Win", LoadSceneMode.Additive);
     }
 
     private void StopGame()

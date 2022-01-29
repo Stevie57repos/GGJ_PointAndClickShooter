@@ -10,23 +10,30 @@ public class LevelCameraManager : MonoBehaviour
     [SerializeField]
     private int _targetPosition;
     private int _previousPosition;
+    [SerializeField]
     private int _currentListPositionTracker;
     private float _positionPercentage = 0;
 
     //testing
     private float _startTime;
-    private float _timeBetweenShootouts = 5;
+    [SerializeField]
+    [Tooltip("Travel time between shootouts")]
+    private float _travelTime = 5;
     [SerializeField]
     private float _cameraDollySpeed;
     [SerializeField]
     private EnemyDeathEventSO _enemyDeathEventChannel;
     [SerializeField]
     private List<int> _targetPositionsList = new List<int>();
+
     [Header("Event Channels")]
     [SerializeField]
     private PlayerWinEventSO _playerWinEventChannel;
     [SerializeField]
     private ReachedTargetPositionEventSO _reachedTargetPositionEventChannel;
+    [SerializeField]
+    private LevelEndEventSO _levelEndEventChannel;
+
     private void Awake()
     {
         _positionPercentage = 0;
@@ -36,55 +43,55 @@ public class LevelCameraManager : MonoBehaviour
         _startTime = Time.time;
     }
 
-    private void Start()
-    {
-        StartCoroutine(LevelWalkthroughRoutine(_cart));
-    }
-
+    [ContextMenu("Next Camera Position")]
     public void NextCameraPosition()
     {
+        _startTime = Time.time;
         StartCoroutine(MovePositionRoutine());
     }
 
-    [ContextMenu("Next Camera Position")]
-    public void DebugNextCameraPosition()
+    public void SpectateLevel()
     {
-        StartCoroutine(MovePositionRoutine());
+        StartCoroutine(LevelWalkthroughRoutine(_cart));
     }
 
     private IEnumerator MovePositionRoutine()
     {   
         while (_cart.m_Position < _targetPosition)
-        {            
-            _positionPercentage += _cameraDollySpeed;
+        {
+            //old method fixed speed
+            //_positionPercentage += _cameraDollySpeed;
+            //float newPosition = Mathf.Lerp(_previousPosition, _targetPosition, _positionPercentage);
+            //_cart.m_Position = newPosition;
+            //yield return null;
+
+            _positionPercentage = (Time.time - _startTime) / _travelTime;
             float newPosition = Mathf.Lerp(_previousPosition, _targetPosition, _positionPercentage);
             _cart.m_Position = newPosition;
             yield return null;
         }
+
         _positionPercentage = 0;
         _previousPosition = _targetPosition;
-
         _currentListPositionTracker++;
-        if (_currentListPositionTracker >= _targetPositionsList.Count)
+        if (_currentListPositionTracker >= _targetPositionsList.Count - 1)
+        {
+            _playerWinEventChannel.RaiseEvent();
             yield return null;
+        }
         else
             _targetPosition = _targetPosition = _targetPositionsList[_currentListPositionTracker];
-
+        
         _reachedTargetPositionEventChannel.RaiseEvent();
     }
 
     private IEnumerator LevelWalkthroughRoutine(CinemachineDollyCart cart)
     {
-        while (cart.m_Position < _targetPositionsList[_targetPositionsList.Count - 1])
+        while (cart.m_Position <= _targetPositionsList[_targetPositionsList.Count - 1])
         {
             while (cart.m_Position < _targetPosition)
             {
-                // percentage over time
-
-                // original percentage
-                //_positionPercentage += _cameraDollySpeed;
-
-                _positionPercentage = (Time.time - _startTime) / _timeBetweenShootouts;
+                _positionPercentage = (Time.time - _startTime) / _travelTime;
                 float newPosition = Mathf.Lerp(_previousPosition, _targetPosition, _positionPercentage);
                 _cart.m_Position = newPosition;
                 yield return null;
@@ -94,10 +101,13 @@ public class LevelCameraManager : MonoBehaviour
             _positionPercentage = 0;
             _previousPosition = _targetPosition;
             _currentListPositionTracker++;
-            if (_currentListPositionTracker >= _targetPositionsList.Count)
+            if (_currentListPositionTracker >= _targetPositionsList.Count - 1 )
+            {
+                _playerWinEventChannel.RaiseEvent();
                 yield return null;
+            }
             else
-                _targetPosition = _targetPosition = _targetPositionsList[_currentListPositionTracker];
+                _targetPosition = _targetPositionsList[_currentListPositionTracker];
 
             _startTime = Time.time; 
             yield return null;

@@ -464,6 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439dfc9ac00db0d458d5813c0bf6b1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 560096714}
   _levelCamManager: {fileID: 846846581}
   _unitSpawnManager: {fileID: 846846584}
   _playerWinEventChannel: {fileID: 11400000, guid: 197f64e2e552ee64d8c47f5612f17ebe,
@@ -476,7 +477,9 @@ MonoBehaviour:
     type: 2}
   _levelEnemiesClearedEvent: {fileID: 11400000, guid: 63aa6e789d7468a468f001719d0e4c28,
     type: 2}
-  _player: {fileID: 560096714}
+  _levelEndEventChannel: {fileID: 11400000, guid: 874b1cd14d9036c4aadadca563ab3ec0,
+    type: 2}
+  _isSpectateLevel: 1
   isEnemyWaveCleared: 0
   hasReachedTargetPosition: 0
 --- !u!4 &846846580
@@ -508,6 +511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cart: {fileID: 560096710}
   _targetPosition: 0
+  _travelTime: 5
   _cameraDollySpeed: 0.001
   _enemyDeathEventChannel: {fileID: 11400000, guid: a4908406dc5a5d94d9b8fdd9953339b1,
     type: 2}
@@ -515,6 +519,8 @@ MonoBehaviour:
   _playerWinEventChannel: {fileID: 11400000, guid: 197f64e2e552ee64d8c47f5612f17ebe,
     type: 2}
   _reachedTargetPositionEventChannel: {fileID: 11400000, guid: 9f595b37099c57045bf39fcff01fed73,
+    type: 2}
+  _levelEndEventChannel: {fileID: 11400000, guid: 874b1cd14d9036c4aadadca563ab3ec0,
     type: 2}
 --- !u!114 &846846582
 MonoBehaviour:
