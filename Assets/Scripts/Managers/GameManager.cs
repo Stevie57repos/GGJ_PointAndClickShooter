@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
-{
+{  
+    [SerializeField]
+    private int _StartAtShootout;
     [SerializeField]
     private Transform _player;
     [SerializeField]
@@ -31,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Debugging")]
     [SerializeField]
-    private bool _isSpectateLevel;
+    private bool _isSpectateLevel; 
     [SerializeField]
     private bool isEnemyWaveCleared = false;
     [SerializeField]
@@ -48,7 +50,7 @@ public class GameManager : MonoBehaviour
         else
         {
             //_unitSpawnManager.SpawnUnits(_levelCamManager.GetCurrentPosition());
-            _levelCamManager.NextCameraPosition();
+            _levelCamManager.StartAtShootOut(_StartAtShootout);
         }
     }
 

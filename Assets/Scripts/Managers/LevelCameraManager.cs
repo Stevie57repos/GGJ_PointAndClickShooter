@@ -43,6 +43,19 @@ public class LevelCameraManager : MonoBehaviour
         _startTime = Time.time;
     }
 
+    public void StartAtShootOut(int Position)
+    {
+        _currentListPositionTracker = Position;
+        
+        if (Position == 0) 
+            _previousPosition = 0;
+        else
+            _previousPosition = _targetPositionsList[Position - 1];
+        _targetPosition = _targetPositionsList[Position];
+
+        NextCameraPosition();
+    }
+
     [ContextMenu("Next Camera Position")]
     public void NextCameraPosition()
     {

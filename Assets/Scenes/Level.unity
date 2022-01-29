@@ -487,6 +487,7 @@ MonoBehaviour:
   _levelEndEventChannel: {fileID: 11400000, guid: 874b1cd14d9036c4aadadca563ab3ec0,
     type: 2}
   _isSpectateLevel: 0
+  _StartAtShootout: 0
   isEnemyWaveCleared: 0
   hasReachedTargetPosition: 0
 --- !u!4 &846846580
