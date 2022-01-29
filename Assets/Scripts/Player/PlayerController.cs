@@ -208,4 +208,9 @@ public class PlayerController : MonoBehaviour
     {
         _healthHandler.TakeDamage(1f);
     }
+
+    public void TakeDamage(float damage)
+    {
+        _healthHandler.TakeDamage(damage);
+    }
 }

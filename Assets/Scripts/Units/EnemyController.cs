@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [RequireComponent(typeof(UnitHealthHandler))]
 public class EnemyController : MonoBehaviour, IInteractable
 {
@@ -17,6 +16,8 @@ public class EnemyController : MonoBehaviour, IInteractable
     private EnemyDeathEventSO _enemyDeathEventChannel;
     [SerializeField]
     private Transform _player;
+    [SerializeField]
+    private EnemyAttackHandler _attackHandler;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class EnemyController : MonoBehaviour, IInteractable
          originalColor = _meshRenderer.material.color;
         _unitHealthHandler = GetComponent<UnitHealthHandler>();
         _unitHealthHandler.Setup(_stats);
+        _attackHandler.Setup(_stats.AttackStats.Damage);  
     }
 
     public void SetUp(Transform player)

@@ -23,19 +23,20 @@ public class CameraTrackEnemyManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnEnemiesCameraTest();
+        //SpawnEnemiesCameraTest();
     }
 
-    private void SpawnEnemiesCameraTest()
-    {
-        for(int i = 0; i < _enemiesSOList.Count; i++)
-        {
-            StatsSO enemyInfo = _enemiesSOList[i];
-            EnemyController enemy = Instantiate(enemyInfo.EnemyPrefab);
-            enemy.transform.position = enemyInfo.SpawnPosition;
-            _enemiesList.Add(enemy);
-        }
-    }
+    //private void SpawnEnemiesCameraTest()
+    //{
+    //    for(int i = 0; i < _enemiesSOList.Count; i++)
+    //    {
+    //        StatsSO enemyInfo = _enemiesSOList[i];
+    //        EnemyController enemy = Instantiate(enemyInfo.unitPrefab);
+    //        enemy.transform.position = enemyInfo.SpawnPosition;
+    //        _enemiesList.Add(enemy);
+    //    }
+    //}
+
     private void OnEnable()
     {
         _enemyDeathChannel.EnemyDeathEvent += EnemyDeathRemoval;

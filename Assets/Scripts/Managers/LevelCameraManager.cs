@@ -18,8 +18,11 @@ public class LevelCameraManager : MonoBehaviour
     private EnemyDeathEventSO _enemyDeathEventChannel;
     [SerializeField]
     private List<int> _targetPositionsList = new List<int>();
+    [Header("Event Channels")]
     [SerializeField]
     private PlayerWinEventSO _playerWinEventChannel;
+    [SerializeField]
+    private ReachedTargetPositionEventSO _reachedTargetPositionEventChannel;
     private void Awake()
     {
         _positionPercentage = 0;
@@ -30,18 +33,19 @@ public class LevelCameraManager : MonoBehaviour
 
     public void NextCameraPosition()
     {
-        StartCoroutine(MovePositionRoutine(_cart));
+
+        StartCoroutine(MovePositionRoutine());
     }
 
     [ContextMenu("Next Camera Position")]
     public void DebugNextCameraPosition()
     {
-        StartCoroutine(MovePositionRoutine(_cart));
+        StartCoroutine(MovePositionRoutine());
     }
 
-    private IEnumerator MovePositionRoutine(CinemachineDollyCart cart)
+    private IEnumerator MovePositionRoutine()
     {   
-        while (cart.m_Position < _targetPosition)
+        while (_cart.m_Position < _targetPosition)
         {
             float newPosition = Mathf.Lerp(_previousPosition, _targetPosition, _positionPercentage);
             _positionPercentage += _cameraDollySpeed;
@@ -50,13 +54,14 @@ public class LevelCameraManager : MonoBehaviour
         }
         _positionPercentage = 0;
         _previousPosition = _targetPosition;
+
         _currentListPositionTracker++;
         if (_currentListPositionTracker >= _targetPositionsList.Count)
             yield return null;
         else
             _targetPosition = _targetPosition = _targetPositionsList[_currentListPositionTracker];
 
-        yield return null; 
+        _reachedTargetPositionEventChannel.RaiseEvent();
     }
 
     private IEnumerator LevelWalkthroughRoutine(CinemachineDollyCart cart)
@@ -82,5 +87,10 @@ public class LevelCameraManager : MonoBehaviour
         }
 
         _playerWinEventChannel.RaiseEvent();
+    }
+
+    public int GetCurrentPosition()
+    {
+        return _currentListPositionTracker;
     }
 }
