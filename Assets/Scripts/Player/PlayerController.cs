@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private InputAction _reload;
     private Camera _camera;
 
+    [Header("Gun Settings")]
     [Range(0.1f, 300f)]
     [SerializeField]
     private float _gunRange;
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour
     private Transform _mouseTarget;
     [SerializeField]
     private ParticleSystem _gunshotParticle;
+
+    [Header("Bullets Settings")]
     [SerializeField]
     private int _maxBullets;
     [SerializeField]
@@ -42,11 +45,16 @@ public class PlayerController : MonoBehaviour
     private Transform BulletsParentUI;
     [SerializeField]
     private GameObject BulletsUI;
+
     [Header("Health Settings")]
     [SerializeField]
     private PlayerHealthHandler _healthHandler;
     [SerializeField]
     private StatsSO _statsSO;
+
+    [Header("Event Channel")]
+    [SerializeField]
+    private PlayerLoseEventChannel _loseEventChannel;
 
     private void Awake()
     {
@@ -130,7 +138,7 @@ public class PlayerController : MonoBehaviour
             {
                 _nextAvailableLeftClick = Time.time + _fireRateCoolDown;
 
-                FireBullet();
+                FireBullet(_leftShotValue);
             }
         }
     }
@@ -143,12 +151,12 @@ public class PlayerController : MonoBehaviour
             {
                 _nextAvailableRightClick = Time.time + _fireRateCoolDown;
 
-                FireBullet();
+                FireBullet(_rightShotValue);
             }
         }
     }
 
-    private void FireBullet()
+    private void FireBullet(float shotValue)
     {
         UpdateBulletUI();
 
@@ -158,7 +166,7 @@ public class PlayerController : MonoBehaviour
         {
             if (hit.transform.GetComponent<IInteractable>() != null)
             {
-                hit.transform.GetComponent<IInteractable>().RightClick(_rightShotValue);
+                hit.transform.GetComponent<IInteractable>().RightClick(shotValue);
             }
         }
     }
@@ -211,6 +219,8 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        _healthHandler.TakeDamage(damage);
+       bool isAlive = _healthHandler.TakeDamage(damage);
+        if (!isAlive)
+            _loseEventChannel.RaiseEvent();
     }
 }

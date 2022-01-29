@@ -14,6 +14,8 @@ public class UnitSpawnManager : MonoBehaviour
     [SerializeField]
     private ClearedEnemyWaveEventSO _clearedEnemyWaveEventChannel;
     [SerializeField]
+    private LevelEnemiesCleaeredEventSO _levelEnemiesClearedEventChannel;
+    [SerializeField]
     private bool _isWaveSpawningComplete;
 
     private Transform _player;
@@ -35,7 +37,13 @@ public class UnitSpawnManager : MonoBehaviour
 
     public void SpawnUnits(int currentPosition)
     {
-        if (currentPosition == _unitWavesList.Count) return;
+        if (currentPosition == _unitWavesList.Count)
+        {
+            print($"no more enemie waves");
+            _levelEnemiesClearedEventChannel.RaiseEvent();
+            return;
+        };
+
         List<StatsSO> unitList = _unitWavesList[currentPosition].UnitList;
         _isWaveSpawningComplete = false;
         StartCoroutine(SpawnUnitsRoutine(unitList));
@@ -65,5 +73,12 @@ public class UnitSpawnManager : MonoBehaviour
         {
             _clearedEnemyWaveEventChannel.RaiseEvent();
         }
+    }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
+        foreach (EnemyController enemy in _enemiesList)
+            enemy.Stop();
     }
 }

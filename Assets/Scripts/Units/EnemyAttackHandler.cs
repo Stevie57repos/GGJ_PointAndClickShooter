@@ -36,13 +36,9 @@ public class EnemyAttackHandler : MonoBehaviour
             _meshRenderer = _targetingReticle.GetComponent<MeshRenderer>();
     }
 
-    private void Start()
+    public void Setup(float damage, Transform player)
     {
-        AttackPlayer(_attackChargeDuration);
-    }
-
-    public void Setup(float damage)
-    {
+        _player = player;
         _attackDamage = damage;
         _targetingReticle.transform.localScale = new Vector3(_startSize, _startSize, _startSize);
         AimTowardsPlayer();
@@ -54,7 +50,7 @@ public class EnemyAttackHandler : MonoBehaviour
         _targetingReticle.transform.position += targetDireciton;
     }
 
-    public void AttackPlayer(float waitDuration)
+    public void AttackPlayer()
     {
         _meshRenderer.material.color = _startColor;
         StartCoroutine(BeginAttackRoutine());
@@ -83,5 +79,10 @@ public class EnemyAttackHandler : MonoBehaviour
         yield return new WaitForSeconds(_attackDelay);
         _startAttackTime = Time.time;
         StartCoroutine(TargetingRoutine(_attackChargeDuration));
+    }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
     }
 }

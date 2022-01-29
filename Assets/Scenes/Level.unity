@@ -190,6 +190,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1562647437260633539, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
+        type: 3}
+      propertyPath: _reloadTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5929525043935688161, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
         type: 3}
       propertyPath: m_RootOrder
@@ -213,22 +218,22 @@ PrefabInstance:
     - target: {fileID: 5929525043935688161, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99944496
+      value: 0.9976424
       objectReference: {fileID: 0}
     - target: {fileID: 5929525043935688161, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.033130303
+      value: 0.06165738
       objectReference: {fileID: 0}
     - target: {fileID: 5929525043935688161, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.003492411
+      value: 0.030075645
       objectReference: {fileID: 0}
     - target: {fileID: 5929525043935688161, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00011576888
+      value: -0.0018587678
       objectReference: {fileID: 0}
     - target: {fileID: 5929525043935688161, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
         type: 3}
@@ -250,20 +255,15 @@ PrefabInstance:
       propertyPath: m_Path
       value: 
       objectReference: {fileID: 846846582}
-    - target: {fileID: 6675309449081742711, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
-        type: 3}
-      propertyPath: m_Position
-      value: -0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7048982218610899691, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
-        type: 3}
-      propertyPath: near clip plane
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 8253158336113449101, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253158336113449101, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad, type: 3}
@@ -291,7 +291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387208462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 8.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 846846579}
   - component: {fileID: 846846581}
   - component: {fileID: 846846582}
-  - component: {fileID: 846846583}
+  - component: {fileID: 846846584}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -464,11 +464,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439dfc9ac00db0d458d5813c0bf6b1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelCamManager: {fileID: 846846581}
+  _unitSpawnManager: {fileID: 846846584}
   _playerWinEventChannel: {fileID: 11400000, guid: 197f64e2e552ee64d8c47f5612f17ebe,
     type: 2}
   _playerLoseEventChannel: {fileID: 11400000, guid: a3f4beb58a863844b815e9d7a23d0128,
     type: 2}
+  _clearedEnemyWaveEventChannel: {fileID: 11400000, guid: 47d9aed0d96086148b72167064ef227d,
+    type: 2}
+  _reachedTargetPositionEventChannel: {fileID: 11400000, guid: 9f595b37099c57045bf39fcff01fed73,
+    type: 2}
+  _levelEnemiesClearedEvent: {fileID: 11400000, guid: 63aa6e789d7468a468f001719d0e4c28,
+    type: 2}
   _player: {fileID: 560096714}
+  isEnemyWaveCleared: 0
+  hasReachedTargetPosition: 0
 --- !u!4 &846846580
 Transform:
   m_ObjectHideFlags: 0
@@ -502,7 +512,10 @@ MonoBehaviour:
   _enemyDeathEventChannel: {fileID: 11400000, guid: a4908406dc5a5d94d9b8fdd9953339b1,
     type: 2}
   _targetPositionsList: 030000000400000006000000080000000a0000000c0000000e00000013000000
-  _playerWinEventChannel: {fileID: 0}
+  _playerWinEventChannel: {fileID: 11400000, guid: 197f64e2e552ee64d8c47f5612f17ebe,
+    type: 2}
+  _reachedTargetPositionEventChannel: {fileID: 11400000, guid: 9f595b37099c57045bf39fcff01fed73,
+    type: 2}
 --- !u!114 &846846582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,45 +537,45 @@ MonoBehaviour:
   m_Waypoints:
   - position: {x: 0, y: 0, z: -5}
     roll: 0
-  - position: {x: 0, y: -0.099208474, z: 3.5873456}
+  - position: {x: 0, y: 0.33176744, z: 3.5873456}
     roll: 0
-  - position: {x: 0, y: 1.5556893, z: 6.2765183}
+  - position: {x: 0, y: 4.527162, z: 12.810888}
     roll: 0
-  - position: {x: 0.9912522, y: 1.7204353, z: 8.230976}
+  - position: {x: 4.8357463, y: 4.527162, z: 18.494286}
     roll: 0
-  - position: {x: 1.6911027, y: 1.555689, z: 11.2035}
+  - position: {x: 2.722153, y: 4.527162, z: 29.661276}
     roll: 0
-  - position: {x: 1.033667, y: 1.5556886, z: 12.985092}
+  - position: {x: 1.724077, y: 4.527162, z: 45.571392}
     roll: 0
-  - position: {x: -0.28518128, y: 1.5556883, z: 20.729546}
+  - position: {x: -1.6298565, y: 4.527162, z: 60.40458}
     roll: 0
-  - position: {x: -2.8159225, y: 1.4976901, z: 25.530207}
+  - position: {x: -10.959105, y: 4.527162, z: 71.18868}
     roll: 0
-  - position: {x: -6.6466923, y: 1.5556875, z: 29.909533}
+  - position: {x: -19.263443, y: 4.527162, z: 80.17767}
     roll: 0
-  - position: {x: -7.064863, y: 1.5556872, z: 36.931736}
+  - position: {x: -20.255823, y: 4.527162, z: 100.981674}
     roll: 0
-  - position: {x: -6.0344634, y: -0.7544635, z: 42.62106}
+  - position: {x: -18.857868, y: -1.1808434, z: 118.030716}
     roll: 0
-  - position: {x: -6.3175387, y: -1.2913896, z: 44.514984}
+  - position: {x: -19.235228, y: -4.0598245, z: 124.90024}
     roll: 0
-  - position: {x: -2.343671, y: -3.27831, z: 48.80292}
+  - position: {x: -13.289079, y: -6.9388056, z: 131.07187}
     roll: 0
-  - position: {x: -0.77256364, y: -4.597972, z: 50.802}
+  - position: {x: -4.8901772, y: -11.700159, z: 139.66664}
     roll: 0
-  - position: {x: 1.7805812, y: -4.964338, z: 51.37568}
+  - position: {x: -0.6319146, y: -14.140607, z: 145.47255}
     roll: 0
-  - position: {x: 6.2269263, y: -5.20123, z: 49.925087}
+  - position: {x: 7.7013803, y: -15.472103, z: 144.69789}
     roll: 0
-  - position: {x: 9.462263, y: -5.20123, z: 51.737663}
+  - position: {x: 19.402643, y: -15.389091, z: 142.17075}
     roll: 0
-  - position: {x: 14.0233755, y: -5.20123, z: 49.428642}
+  - position: {x: 35.89685, y: -15.306078, z: 146.62703}
     roll: 0
-  - position: {x: 13.8167, y: -5.20123, z: 47.4243}
+  - position: {x: 39.249123, y: -15.223065, z: 130.32869}
     roll: 0
-  - position: {x: 12.420538, y: -5.20123, z: 46.594967}
+  - position: {x: 31.447754, y: -15.140053, z: 129.70671}
     roll: 0
---- !u!114 &846846583
+--- !u!114 &846846584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -571,18 +584,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 846846578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 359c95071e4a30d4abd0c86a0fab192a, type: 3}
+  m_Script: {fileID: 11500000, guid: a5408cdae596aa940b2eee3107d6523d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 183619689045447280, guid: 0f2f231335500ed419cd0c1b28c7d8f0,
-    type: 3}
-  _spawn: {fileID: 0}
   _enemiesList: []
-  _enemiesSOList: []
-  _enemyDeathChannel: {fileID: 11400000, guid: a4908406dc5a5d94d9b8fdd9953339b1, type: 2}
-  _playerWinEventChannel: {fileID: 11400000, guid: 197f64e2e552ee64d8c47f5612f17ebe,
+  _unitWavesList:
+  - {fileID: 11400000, guid: 790c7dc5b6c3d3a45af9483c81e2aadc, type: 2}
+  - {fileID: 11400000, guid: 717e4852831638947ab3040b726bf366, type: 2}
+  _enemyDeathEventChannel: {fileID: 11400000, guid: a4908406dc5a5d94d9b8fdd9953339b1,
     type: 2}
-  _numberOfEnemies: 0
+  _clearedEnemyWaveEventChannel: {fileID: 11400000, guid: 47d9aed0d96086148b72167064ef227d,
+    type: 2}
+  _levelEnemiesClearedEventChannel: {fileID: 11400000, guid: 63aa6e789d7468a468f001719d0e4c28,
+    type: 2}
+  _isWaveSpawningComplete: 0
 --- !u!1001 &1360017907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -594,6 +609,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f626a8763d10cde46936ca0ca3616363,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f626a8763d10cde46936ca0ca3616363,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f626a8763d10cde46936ca0ca3616363,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f626a8763d10cde46936ca0ca3616363,
         type: 3}

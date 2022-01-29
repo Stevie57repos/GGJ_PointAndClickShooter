@@ -14,8 +14,7 @@ public class EnemyController : MonoBehaviour, IInteractable
     Color originalColor;
     [SerializeField]
     private EnemyDeathEventSO _enemyDeathEventChannel;
-    [SerializeField]
-    private Transform _player;
+
     [SerializeField]
     private EnemyAttackHandler _attackHandler;
 
@@ -24,14 +23,14 @@ public class EnemyController : MonoBehaviour, IInteractable
         _meshRenderer = GetComponentInChildren<MeshRenderer>();
          originalColor = _meshRenderer.material.color;
         _unitHealthHandler = GetComponent<UnitHealthHandler>();
-        _unitHealthHandler.Setup(_stats);
-        _attackHandler.Setup(_stats.AttackStats.Damage);  
+        _unitHealthHandler.Setup(_stats);         
     }
 
     public void SetUp(Transform player)
     {
-        _player = player;
         transform.LookAt(player);
+        _attackHandler.Setup(_stats.AttackStats.Damage, player);
+        _attackHandler.AttackPlayer();
     }
 
     private void OnEnable()
@@ -64,5 +63,10 @@ public class EnemyController : MonoBehaviour, IInteractable
         _meshRenderer.material.color = Color.yellow;
         yield return new WaitForSeconds(0.1f);
         _meshRenderer.material.color = originalColor;
+    }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
     }
 }

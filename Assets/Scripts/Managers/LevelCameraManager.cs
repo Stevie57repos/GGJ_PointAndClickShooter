@@ -93,4 +93,9 @@ public class LevelCameraManager : MonoBehaviour
     {
         return _currentListPositionTracker;
     }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
+    }
 }
