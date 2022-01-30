@@ -132,6 +132,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 705085138, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad, type: 3}
+      propertyPath: _isInvincible
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1074114792, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad, type: 3}
       propertyPath: m_audioClip
       value: 
