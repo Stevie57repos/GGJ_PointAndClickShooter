@@ -10,6 +10,11 @@ public class UI_Menu : MonoBehaviour
     [SerializeField]
     private GameObject _controlsGO;
 
+    private void Awake()
+    {
+        Cursor.visible = true;
+    }
+
     public void LoadLevel()
     {
         SceneManager.LoadScene("Level");
