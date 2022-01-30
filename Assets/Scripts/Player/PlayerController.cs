@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private float _rightShotValue;
     [SerializeField]
     private ParticleSystem _gunshotParticle;
+    [SerializeField]
+    private GameObject _reloadIcon;
 
     [Header("Bullets Settings")]
     [SerializeField]
@@ -74,6 +76,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private StopSoundEventChannelSO _stopSoundEventChannel;
 
+
+
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
@@ -84,6 +88,7 @@ public class PlayerController : MonoBehaviour
         _nextAvailableRightClick = float.MinValue;
 
         _healthHandler.Setup(_statsSO);
+        _reloadIcon.SetActive(false);
     }
 
     private void Start()
@@ -138,6 +143,7 @@ public class PlayerController : MonoBehaviour
                 _reloadclipPlayed = true;
                 StartCoroutine(ReloadingRoutine());
             }
+            _reloadIcon.SetActive(false);
         }
     }
 
@@ -248,9 +254,10 @@ public class PlayerController : MonoBehaviour
             {
                 _soundEventChannel.RaiseEvent(_emptyClip, this.transform);
                 _emptyClipPlayed = true;
+                _reloadIcon.SetActive(true);
                 StartCoroutine(EmptyClipRoutine());
             }
-        }
+        }       
         return canShoot;
     }
 
