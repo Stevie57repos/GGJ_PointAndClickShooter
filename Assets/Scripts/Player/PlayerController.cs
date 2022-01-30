@@ -8,8 +8,6 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     private PlayerInput _playerInput;
-    private InputAction _leftClick;
-    private InputAction _mouse;
     private InputAction _reload;
     private Camera _camera;
 
@@ -28,10 +26,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _rightShotValue;
     [SerializeField]
-    private GameObject _gun;
-    [SerializeField]
-    private Transform _mouseTarget;
-    [SerializeField]
     private ParticleSystem _gunshotParticle;
 
     [Header("Bullets Settings")]
@@ -46,6 +40,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject BulletsUI;
 
+    [Header("Audio Clips")]
+    [SerializeField]
+    private AudioClip _gunShotClip;
+    [SerializeField]
+    private AudioClip _dartShotClip;
+    [SerializeField]
+    private AudioClip _reloadClip;
+    private bool _reloadclipPlayed = false;
+    [SerializeField]
+    private AudioClip _emptyClip;
+    private bool _emptyClipPlayed = false;
+    [SerializeField]
+    private AudioClip _playerHurtClip;
+
     [Header("Health Settings")]
     [SerializeField]
     private PlayerHealthHandler _healthHandler;
@@ -57,6 +65,8 @@ public class PlayerController : MonoBehaviour
     private PlayerLoseEventChannel _loseEventChannel;
     [SerializeField]
     private AllyDeathEventSO _allyDeathEventChannel;
+    [SerializeField]
+    private SoundEventChannelSO _soundEventChannel;
 
     private void Awake()
     {
@@ -89,7 +99,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //PointGun();
         LeftClick();
         RightClick();
     }
@@ -115,24 +124,20 @@ public class PlayerController : MonoBehaviour
                 if (!bullet.activeInHierarchy) bullet.SetActive(true); 
             }
             _currentBullets = _maxBullets;
-            // play reload sound
+            if(!_reloadclipPlayed)
+            {
+                _soundEventChannel.RaiseEvent(_reloadClip, this.transform);
+                _reloadclipPlayed = true;
+                StartCoroutine(ReloadingRoutine());
+            }
         }
     }
 
-    // TO DO
-    //private void PointGun()
-    //{
-    //    var ray = _camera.ScreenPointToRay(Input.mousePosition);
-    //    if(Physics.Raycast(ray, out var hit, 300f))
-    //    {
-    //        if (hit.collider)
-    //        {
-    //            _mouseTarget.position = hit.collider.transform.position;
-    //        }
-    //    }
-
-    //    _gun.transform.LookAt(_mouseTarget);
-    //}
+    private IEnumerator ReloadingRoutine()
+    {
+        yield return new WaitForSeconds(1.1f);
+        _reloadclipPlayed = false;
+    }
 
     private void LeftClick()
     {
@@ -143,6 +148,7 @@ public class PlayerController : MonoBehaviour
                 _nextAvailableLeftClick = Time.time + _fireRateCoolDown;
 
                 FireBullet(_leftShotValue);
+                _soundEventChannel.RaiseEvent(_gunShotClip, this.transform);
             }
         }
     }
@@ -156,6 +162,7 @@ public class PlayerController : MonoBehaviour
                 _nextAvailableRightClick = Time.time + _fireRateCoolDown;
 
                 FireBullet(_rightShotValue);
+                _soundEventChannel.RaiseEvent(_dartShotClip, this.transform);
             }
         }
     }
@@ -210,9 +217,39 @@ public class PlayerController : MonoBehaviour
         _gunshotParticle.Play();
     }
 
+    private int RandomNumber(int limit)
+    {
+        int randomNumber = 0;
+        int lastNumber = 0;
+        int maxAttempts = 5;
+
+        for(int i = 0; randomNumber == lastNumber && i < maxAttempts; i++)
+        {
+            randomNumber = UnityEngine.Random.Range(0, limit);
+        }
+
+        return randomNumber; 
+    }
+
     private bool CheckBulletCount()
     {
-        return _currentBullets > 0;
+        bool canShoot = _currentBullets > 0;
+        if (!canShoot)
+        {
+            if (!_emptyClipPlayed)
+            {
+                _soundEventChannel.RaiseEvent(_emptyClip, this.transform);
+                _emptyClipPlayed = true;
+                StartCoroutine(EmptyClipRoutine());
+            }
+        }
+        return canShoot;
+    }
+
+    private IEnumerator EmptyClipRoutine()
+    {
+        yield return new WaitForSeconds(0.8f);
+        _emptyClipPlayed = false;
     }
 
     [ContextMenu("Take 1 damage")]
@@ -229,6 +266,8 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage)
     {
        bool isAlive = _healthHandler.TakeDamage(damage);
+        _soundEventChannel.RaiseEvent(_playerHurtClip, this.transform);
+
         if (!isAlive)
             _loseEventChannel.RaiseEvent();
     }

@@ -132,10 +132,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 705085138, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad, type: 3}
-      propertyPath: _isInvincible
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5929525043935688161, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
         type: 3}
       propertyPath: m_RootOrder
@@ -350,6 +346,7 @@ GameObject:
   - component: {fileID: 846846582}
   - component: {fileID: 846846584}
   - component: {fileID: 846846585}
+  - component: {fileID: 846846586}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -541,6 +538,21 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 4897911494624254554, guid: d460e6e516711054aa0e108e3ac33ef3,
     type: 3}
   _projectilePoolAmount: 10
+--- !u!114 &846846586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846846578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b50ae0cb86efcfc4e9ce9eeb89ebe91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundEmitterPrefab: {fileID: 853502042754207892, guid: c9d4729b3f381774fb78b59927e4f239,
+    type: 3}
+  _soundEventChannel: {fileID: 11400000, guid: bc4d813911a4f03498979e2e9735dcec, type: 2}
 --- !u!1001 &1605935508146579889
 PrefabInstance:
   m_ObjectHideFlags: 0

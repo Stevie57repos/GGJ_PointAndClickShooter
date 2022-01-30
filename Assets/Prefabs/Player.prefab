@@ -1078,8 +1078,6 @@ MonoBehaviour:
   _reloadTime: 1
   _leftShotValue: 1
   _rightShotValue: -1
-  _gun: {fileID: 0}
-  _mouseTarget: {fileID: 612444719}
   _gunshotParticle: {fileID: 198405310613240126}
   _maxBullets: 6
   _currentBullets: 0
@@ -1087,11 +1085,17 @@ MonoBehaviour:
   BulletsParentUI: {fileID: 663676543}
   BulletsUI: {fileID: 3452567526860469988, guid: 2c302d2373b19814bb10918b5c2c96c0,
     type: 3}
+  _gunShotClip: {fileID: 8300000, guid: 84202aa6bd4ce1a45b85eb044f458023, type: 3}
+  _dartShotClip: {fileID: 8300000, guid: dfd8ecf2b9235ac409ae0d8b082a7e8f, type: 3}
+  _reloadClip: {fileID: 8300000, guid: 54ec0ca307278c14889dec892ded3ee0, type: 3}
+  _emptyClip: {fileID: 8300000, guid: 7974883561796a9449cb975f55946307, type: 3}
+  _playerHurtClip: {fileID: 8300000, guid: 322be9eab4c0287449e5423e12143e97, type: 3}
   _healthHandler: {fileID: 705085138}
   _statsSO: {fileID: 11400000, guid: 1388f2e50c1682c459bfa2f0142024e9, type: 2}
   _loseEventChannel: {fileID: 11400000, guid: a3f4beb58a863844b815e9d7a23d0128, type: 2}
   _allyDeathEventChannel: {fileID: 11400000, guid: d025ba092bcc5544aaa2f8aad51aa4c2,
     type: 2}
+  _soundEventChannel: {fileID: 11400000, guid: bc4d813911a4f03498979e2e9735dcec, type: 2}
 --- !u!114 &705085137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,7 +1144,7 @@ MonoBehaviour:
   - {fileID: 1258264968846407811}
   - {fileID: 1258264968778808401}
   - {fileID: 1258264970099846210}
-  _isInvincible: 1
+  _isInvincible: 0
 --- !u!114 &6675309449081742711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1197,8 +1201,9 @@ AudioSource:
   m_GameObject: {fileID: 8253158336113449101}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 9054347049059097336, guid: 594fd5b758a3d2d4a8b32e3d0518a9e7,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 2b390f5980c93c6478ca5ea1a639d6aa, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
