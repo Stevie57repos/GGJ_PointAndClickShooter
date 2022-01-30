@@ -11,8 +11,9 @@ public class DissolveObject : MonoBehaviour
     [SerializeField]
     private Material material;
 
+    [SerializeField]
     private float _minValue = 2.3f;
-    private float _maxValue = 4.7f;
+    private float _maxValue = 4.3f;
     private float _startTime;
     [SerializeField]
     private float _dissolvePercentage;
@@ -20,23 +21,9 @@ public class DissolveObject : MonoBehaviour
     [Header("Debugging")]
     private bool _isLoop = true;
     private bool _isIn = false;  
-    [Range(2.3f, 4.7f)]
+    [Range(0, 4)]
     [SerializeField]
     private float testValues;
-
-    private void Awake()
-    {
-    }
-
-    private void OnEnable()
-    {
-        
-    }
-
-    private void Start()
-    {
-        //DissolveOut(.5f);
-    }
 
     private  IEnumerator TestDissolveOut()
     {
@@ -69,11 +56,20 @@ public class DissolveObject : MonoBehaviour
         material.SetFloat("_NoiseStrength", noiseStrength);
     }
 
+    private void Update()
+    {
+        //material = GetComponent<Renderer>().material;           
+        //SetHeight(testValues);
+    }
+
     public void DissolveIn(float dissolveTime)
     {
         material = GetComponent<Renderer>().material;
         _dissolvePercentage = 0;
         _startTime = Time.time;
+        _minValue = (float)transform.position.y - 1.1f;
+        _maxValue = (float)transform.position.y + 1.1f;
+
         StartCoroutine(DissolveInRoutine(dissolveTime));
     }
 
@@ -83,16 +79,8 @@ public class DissolveObject : MonoBehaviour
         {
             _dissolvePercentage = (Time.time - _startTime) / dissolveTime;
             float newValue = Mathf.Lerp(_minValue, _maxValue, _dissolvePercentage);
-
             SetHeight(newValue);
             yield return null;
-        }
-
-        if (_dissolvePercentage > 1f)
-        {
-            _dissolvePercentage = 1;
-            float newValue = Mathf.Lerp(_minValue, _maxValue, _dissolvePercentage);
-            SetHeight(newValue);
         }
             
         yield return null;

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ececffda4976d54f91789e70d6c12ac, type: 3}
+  m_Name: AllyStats
+  m_EditorClassIdentifier: 
+  Type: 1
+  unitPrefab: {fileID: 0}
+  SpawnPosition: {x: -2.64, y: 1, z: 6.83}
+  NextSpawnDelay: 0
+  HealthStats:
+    maxHealth: 2
+  AttackStats:
+    Damage: 1
+    AttackChargeTime: 3

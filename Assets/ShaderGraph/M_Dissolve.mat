@@ -47,9 +47,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CutoffHeight: 0
+    - _CutoffHeight: 2.5
     - _EdgeWidth: 0.05
-    - _NoiseScale: 50
+    - _NoiseScale: 45.96
     - _NoiseStrength: 1
     - _QueueControl: 0
     - _QueueOffset: 0

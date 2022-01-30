@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Wave 3
   m_EditorClassIdentifier: 
   UnitList:
-  - {fileID: 11400000, guid: 56e56821e2a750b49b150f145efd7264, type: 2}
-  - {fileID: 11400000, guid: fdfdcfbb152f7b94e8f54262046dd12d, type: 2}
-  - {fileID: 11400000, guid: a9e745a4bc9946e4b9fee5b13b9bdb67, type: 2}
-  - {fileID: 11400000, guid: 6a62e4f0a0937cf419a5e1f9255e7a3d, type: 2}
-  - {fileID: 11400000, guid: 0dcfa1119a9f4f6408f8edb0c8a6de0a, type: 2}
-  - {fileID: 11400000, guid: 1315a22e08e41ea4abc00005d41cad34, type: 2}
-  - {fileID: 11400000, guid: 291c350dc4356584e9d8a0f6cb20734c, type: 2}
+  - {fileID: 11400000, guid: 2c00064b35bf0df47ab57c489e076b34, type: 2}
+  - {fileID: 11400000, guid: 47310be8bdba5074f91cee3ffda72f03, type: 2}
+  - {fileID: 11400000, guid: 83d80bd8a89ea7940b7cb8db583569dd, type: 2}
+  - {fileID: 11400000, guid: bd2219c6e5fc5094fa87e094a6bda113, type: 2}
+  - {fileID: 11400000, guid: 003b9f6356da3434d98916ef2c686e8f, type: 2}
+  - {fileID: 11400000, guid: d203ff2bd6f7cf24f8a46f28fb3e7c6a, type: 2}
+  - {fileID: 11400000, guid: 200f58d672d76074aa322ecc960bcb2c, type: 2}

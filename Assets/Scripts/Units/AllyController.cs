@@ -20,7 +20,7 @@ public class AllyController : MonoBehaviour, IInteractable
         _unitHealthHandler = GetComponent<UnitHealthHandler>();
         _unitHealthHandler.Setup(_stats);
     }
-
+    
     private void OnEnable()
     {
         _UICanvas.worldCamera = Camera.main;
@@ -57,4 +57,9 @@ public class AllyController : MonoBehaviour, IInteractable
     {
         _unitHealthHandler.TakeDamage(damage);
     }
+    public StatsSO GetStats()
+    {
+        return _stats;
+    }
+
 }

@@ -31,6 +31,11 @@ public class EnemyController : MonoBehaviour, IInteractable
         _unitHealthHandler.Setup(_stats);         
     }
 
+    private void Start()
+    {
+        _dissolver.DissolveIn(_dissolveTime);
+    }
+
     public void SetUp(Transform player)
     {
         _attackHandler.Setup(_stats.AttackStats.Damage, player);        
@@ -39,7 +44,6 @@ public class EnemyController : MonoBehaviour, IInteractable
     private void OnEnable()
     {
         _UICanvas.worldCamera = Camera.main;
-        _dissolver.DissolveIn(_dissolveTime);
     }
 
     public void LeftClick(float heal)

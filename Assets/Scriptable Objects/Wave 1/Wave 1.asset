@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wave 1
   m_EditorClassIdentifier: 
   UnitList:
-  - {fileID: 11400000, guid: 3d1cc121b5e5ec5429e19386b2d107c3, type: 2}
-  - {fileID: 11400000, guid: 6459f578ea1962c4cae713393ddf5953, type: 2}
-  - {fileID: 11400000, guid: f22e4cab130986a469499e111fad5d5a, type: 2}
-  - {fileID: 11400000, guid: af720c027ebc4994f8ecd1a8f95f3e1b, type: 2}
+  - {fileID: 11400000, guid: 1b12af20623bbbc46b85c04c37c85b84, type: 2}
+  - {fileID: 11400000, guid: 9db592eee764d3b43b30b974d10a6b49, type: 2}
+  - {fileID: 11400000, guid: 675b6c181ea14bf43a5f265d1b0d20b9, type: 2}
+  - {fileID: 11400000, guid: 94a155ac3915b574db9be18a6dd05ee8, type: 2}

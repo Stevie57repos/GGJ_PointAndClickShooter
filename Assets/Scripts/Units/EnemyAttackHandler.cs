@@ -128,5 +128,7 @@ public class EnemyAttackHandler : MonoBehaviour
         projectile.transform.position = _bulletSpawnPoint.position;
         projectile.gameObject.SetActive(true);
         projectile.LaunchProjectile(_target.position, _attackDamage, _projectileSpeed);
+
+        StartCoroutine(BeginAttackRoutine());
     }
 }

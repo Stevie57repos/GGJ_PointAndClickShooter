@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ececffda4976d54f91789e70d6c12ac, type: 3}
   m_Name: Unit 4
   m_EditorClassIdentifier: 
-  Type: 0
-  unitPrefab: {fileID: 183619689045447309, guid: 0f2f231335500ed419cd0c1b28c7d8f0,
+  Type: 1
+  unitPrefab: {fileID: 6815074837522389699, guid: 77fc37228f64dbd468138488e51dfe88,
     type: 3}
-  SpawnPosition: {x: -11.2, y: 2, z: 57.6}
-  NextSpawnDelay: 1
+  SpawnPosition: {x: -4.36, y: 2, z: 65.23}
+  NextSpawnDelay: 0.5
   HealthStats:
-    maxHealth: 1
+    maxHealth: 2
   AttackStats:
-    Damage: 1
-    AttackChargeTime: 3
+    Damage: 0
+    AttackChargeTime: 0
