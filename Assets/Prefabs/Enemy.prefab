@@ -415,6 +415,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _colliders: []
+  _gunShot: {fileID: 8300000, guid: a5a032f880b5f2a4a88c89cbb852dc0f, type: 3}
+  _soundEventChannel: {fileID: 11400000, guid: bc4d813911a4f03498979e2e9735dcec, type: 2}
 --- !u!54 &2201256040601553040
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -530,6 +532,8 @@ MonoBehaviour:
   noiseStrength: 0.25
   objectHeight: 1
   material: {fileID: 0}
+  _minValue: 2.3
+  _dissolvePercentage: 0
   testValues: 0
 --- !u!1 &8448166855352227627
 GameObject:

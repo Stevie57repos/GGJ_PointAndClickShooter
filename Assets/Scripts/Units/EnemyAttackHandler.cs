@@ -36,6 +36,15 @@ public class EnemyAttackHandler : MonoBehaviour
     [SerializeField]
     Collider[] _colliders;
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip _gunShot;
+
+
+    [Header("Event Channel")]
+    [SerializeField]
+    private SoundEventChannelSO _soundEventChannel;
+
     private void OnEnable()
     {
         if(_meshRenderer == null)
@@ -128,7 +137,7 @@ public class EnemyAttackHandler : MonoBehaviour
         projectile.transform.position = _bulletSpawnPoint.position;
         projectile.gameObject.SetActive(true);
         projectile.LaunchProjectile(_target.position, _attackDamage, _projectileSpeed);
-
+        _soundEventChannel.RaiseEvent(_gunShot, this.transform);
         StartCoroutine(BeginAttackRoutine());
     }
 }
