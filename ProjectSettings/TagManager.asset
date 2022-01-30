@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ally
   - OutsideFOV
+  - Truck
   layers:
   - Default
   - TransparentFX
