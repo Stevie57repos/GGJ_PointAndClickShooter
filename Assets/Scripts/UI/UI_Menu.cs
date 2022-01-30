@@ -10,6 +10,8 @@ public class UI_Menu : MonoBehaviour
     [SerializeField]
     private GameObject _controlsGO;
     [SerializeField]
+    private GameObject _creditsGO;
+    [SerializeField]
     private AudioSource _audioSource;
     [SerializeField]
     private AudioClip _menuClip;
@@ -45,6 +47,18 @@ public class UI_Menu : MonoBehaviour
     public void CloseControlsUI()
     {
         _controlsGO.SetActive(false);
+        _mainMenuGO.SetActive(true);
+    }
+
+    public void OpenCreditsUI()
+    {
+        _creditsGO.SetActive(true);
+        _mainMenuGO.SetActive(false);
+    }
+
+    public void CloseCreditsUI()
+    {
+        _creditsGO.SetActive(false);
         _mainMenuGO.SetActive(true);
     }
 
