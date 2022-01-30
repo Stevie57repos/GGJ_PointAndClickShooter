@@ -1324,6 +1324,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b9dcaea581b5279438be4d5a876cb1ea, type: 2}
   - {fileID: 11400000, guid: 3fa8decfb53fd0840b80eff3dc763043, type: 2}
   - {fileID: 11400000, guid: f160806ded0fd1844913da5a99a2f79d, type: 2}
+  - {fileID: 11400000, guid: 9fe1b9c07171ecd47b3efc79958c9d23, type: 2}
   _enemyDeathEventChannel: {fileID: 11400000, guid: a4908406dc5a5d94d9b8fdd9953339b1,
     type: 2}
   _clearedEnemyWaveEventChannel: {fileID: 11400000, guid: 47d9aed0d96086148b72167064ef227d,

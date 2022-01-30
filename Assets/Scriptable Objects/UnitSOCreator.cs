@@ -24,7 +24,7 @@ public class UnitSOCreator : MonoBehaviour
         unit.Type = UnitType.Enemy;        
         unit.HealthStats = GetComponent<EnemyController>().GetStats().HealthStats;
         unit.AttackStats = GetComponent<EnemyController>().GetStats().AttackStats;
-        AssetDatabase.CreateAsset(unit, "Assets/Scriptable Objects/Wave 6/Unit.asset");
+        AssetDatabase.CreateAsset(unit, "Assets/Scriptable Objects/Wave 7/Unit.asset");
     }
 
     [ContextMenu("Create Ally Unit")]
@@ -35,7 +35,7 @@ public class UnitSOCreator : MonoBehaviour
         unit.SpawnPosition = transform.position;
         unit.Type = UnitType.Ally;
         unit.HealthStats = GetComponent<AllyController>().GetStats().HealthStats;
-        AssetDatabase.CreateAsset(unit, "Assets/Scriptable Objects/Wave 6/Unit.asset");
+        AssetDatabase.CreateAsset(unit, "Assets/Scriptable Objects/Wave 7/Unit.asset");
     }
 
 #endif
