@@ -14,6 +14,7 @@ public class DissolveObject : MonoBehaviour
     private float _minValue = 2.3f;
     private float _maxValue = 4.7f;
     private float _startTime;
+    [SerializeField]
     private float _dissolvePercentage;
 
     [Header("Debugging")]
@@ -76,6 +77,26 @@ public class DissolveObject : MonoBehaviour
         StartCoroutine(DissolveInRoutine(dissolveTime));
     }
 
+    private IEnumerator DissolveInRoutine(float dissolveTime)
+    {
+        while (_dissolvePercentage < 1f)
+        {
+            _dissolvePercentage = (Time.time - _startTime) / dissolveTime;
+            float newValue = Mathf.Lerp(_minValue, _maxValue, _dissolvePercentage);
+
+            SetHeight(newValue);
+            yield return null;
+        }
+
+        if (_dissolvePercentage > 1f)
+        {
+            _dissolvePercentage = 1;
+            float newValue = Mathf.Lerp(_minValue, _maxValue, _dissolvePercentage);
+            SetHeight(newValue);
+        }
+            
+        yield return null;
+    }
     public void DissolveOut(float dissolveTime)
     {
         material = GetComponent<Renderer>().material;
@@ -84,26 +105,12 @@ public class DissolveObject : MonoBehaviour
         StartCoroutine(DissolveOutRoutine(dissolveTime));
 
     }
-
-    private IEnumerator DissolveInRoutine(float dissolveTime)
-    {
-        while(_dissolvePercentage < 1f)
-        {
-            _dissolvePercentage = (Time.time - _startTime) / dissolveTime;
-            float newValue = Mathf.Lerp(_minValue, _maxValue, _dissolvePercentage);
-
-            SetHeight(newValue);
-            yield return null;
-        }
-    }
-
     private IEnumerator DissolveOutRoutine(float dissolveTime)
     {
         while (_dissolvePercentage > 0f)
         {    
             _dissolvePercentage = (((Time.time - _startTime) / dissolveTime) - 1) * -1;            
-            float newValue = Mathf.Lerp(_minValue, _maxValue, _dissolvePercentage);
-            print($"DissolvePercentage is {_dissolvePercentage}.newValue is {newValue}");
+            float newValue = Mathf.Lerp(_minValue, _maxValue, _dissolvePercentage);    
             SetHeight(newValue);
             yield return null;
         }

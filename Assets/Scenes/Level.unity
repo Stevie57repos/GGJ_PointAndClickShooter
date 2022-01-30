@@ -125,6 +125,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &39759087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1258264970099846210, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 111497389}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &111497389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132,6 +138,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 705085138, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad, type: 3}
+      propertyPath: _isInvincible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 705085138, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad, type: 3}
+      propertyPath: _healthUIList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 705085138, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad, type: 3}
+      propertyPath: _healthUIList.Array.data[3]
+      value: 
+      objectReference: {fileID: 39759087}
     - target: {fileID: 1258264968778808402, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -521,7 +539,7 @@ MonoBehaviour:
   _cart: {fileID: 560096710}
   _targetPosition: 0
   _currentListPositionTracker: 0
-  _travelTime: 5
+  _travelTime: 6
   _cameraDollySpeed: 0.001
   _enemyDeathEventChannel: {fileID: 11400000, guid: a4908406dc5a5d94d9b8fdd9953339b1,
     type: 2}

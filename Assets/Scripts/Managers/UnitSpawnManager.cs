@@ -45,6 +45,11 @@ public class UnitSpawnManager : MonoBehaviour
             _isLastWave = true;
         };
 
+        if (currentPosition == _unitWavesList.Count)
+        {
+            _playerWinEventChannel.RaiseEvent();
+            return;
+        }
         List<StatsSO> unitList = _unitWavesList[currentPosition].UnitList;
 
         _isWaveSpawningComplete = false;

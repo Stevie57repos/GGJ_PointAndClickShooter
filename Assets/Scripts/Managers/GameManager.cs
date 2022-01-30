@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
     public void PlayerWin()
     {
         // ensure the win scene is only loaded once
-        if (!_isPlayerWin) return;
+        if (_isPlayerWin) return;
         SceneManager.LoadScene("Win", LoadSceneMode.Additive);
         StopGame();        
         _isPlayerWin = true;

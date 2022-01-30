@@ -16,7 +16,7 @@ public class HealthHandler : MonoBehaviour
         _maxHealth = stats.HealthStats.maxHealth;
     }
 
-    public bool TakeDamage(float damage)
+    virtual public bool TakeDamage(float damage)
     {
         if (_health - damage <= _minHealth)
         {

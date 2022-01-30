@@ -7,6 +7,10 @@ public class PlayerHealthHandler : HealthHandler
     [SerializeField]
     List<GameObject> _healthUIList = new List<GameObject>();
 
+    [Header("Debugging")]
+    [SerializeField]
+    private bool _isInvincible;
+
     protected override void UpdateHealthUI(float damage)
     {
         if(damage > 0)
@@ -27,5 +31,12 @@ public class PlayerHealthHandler : HealthHandler
                     _healthUIList[i].SetActive(true);
             }
         }
+    }
+
+    public override bool TakeDamage(float damage)
+    {
+        if(!_isInvincible) return base.TakeDamage(damage);
+
+        return true;
     }
 }
