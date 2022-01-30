@@ -17,7 +17,7 @@ MonoBehaviour:
   SpawnPosition: {x: -2.64, y: 1, z: 6.83}
   NextSpawnDelay: 0
   HealthStats:
-    maxHealth: 2
+    maxHealth: 4
   AttackStats:
     Damage: 1
     AttackChargeTime: 3

@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(UnitHealthHandler))]
+[RequireComponent(typeof(AllyHealthHandler))]
 public class AllyController : MonoBehaviour, IInteractable
 {
     [SerializeField]
     private Canvas _UICanvas;
-    private UnitHealthHandler _unitHealthHandler;
+    private AllyHealthHandler _allyHealthHandler;
+
     private MeshRenderer _meshRenderer;
     [SerializeField]
     private StatsSO _stats;
@@ -27,8 +28,8 @@ public class AllyController : MonoBehaviour, IInteractable
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         originalColor = _meshRenderer.material.color;
-        _unitHealthHandler = GetComponent<UnitHealthHandler>();
-        _unitHealthHandler.Setup(_stats);
+        _allyHealthHandler = GetComponent<AllyHealthHandler>();
+        _allyHealthHandler.Setup(_stats);
     }
 
     private void Start()
@@ -43,13 +44,13 @@ public class AllyController : MonoBehaviour, IInteractable
 
     public void LeftClick(float heal)
     {
-        _unitHealthHandler.TakeDamage(heal);
+        _allyHealthHandler.TakeDamage(heal);
         StartCoroutine(DamageVisualRoutine());
     }
 
     public void RightClick(float damage)
     {
-        bool isAlive = _unitHealthHandler.TakeDamage(damage);
+        bool isAlive = _allyHealthHandler.TakeDamage(damage);
         if (isAlive)
         {
             StartCoroutine(DamageVisualRoutine());
@@ -70,7 +71,7 @@ public class AllyController : MonoBehaviour, IInteractable
 
     public void TakeDamage(float damage)
     {
-        bool isAlive = _unitHealthHandler.TakeDamage(damage);
+        bool isAlive = _allyHealthHandler.TakeDamage(damage);
         if (!isAlive)
         {
             _allyDeathEventChannel.RaiseEvent();

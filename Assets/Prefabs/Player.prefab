@@ -1077,7 +1077,7 @@ MonoBehaviour:
   _fireRateCoolDown: 0.5
   _reloadTime: 1
   _leftShotValue: 1
-  _rightShotValue: -1
+  _rightShotValue: -2
   _gunshotParticle: {fileID: 198405310613240126}
   _maxBullets: 6
   _currentBullets: 0

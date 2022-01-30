@@ -190,9 +190,9 @@ GameObject:
   - component: {fileID: 6815074837522389697}
   - component: {fileID: 6815074837522389698}
   - component: {fileID: 6815074837522389757}
-  - component: {fileID: 6134747697731376674}
   - component: {fileID: 1982050497}
   - component: {fileID: 1304534666565691052}
+  - component: {fileID: 2112395255124428816}
   m_Layer: 9
   m_Name: AllyUnit
   m_TagString: Ally
@@ -298,20 +298,6 @@ MonoBehaviour:
   _dissolveTime: 0.5
   _allyDeathEventChannel: {fileID: 11400000, guid: d025ba092bcc5544aaa2f8aad51aa4c2,
     type: 2}
---- !u!114 &6134747697731376674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6815074837522389699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f626c228d7e80a459e48ab6c6efb3f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 0
-  _image: {fileID: 5246213275441295378}
 --- !u!54 &1982050497
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -346,3 +332,18 @@ MonoBehaviour:
   _minValue: 2.3
   _dissolvePercentage: 0
   testValues: 0
+--- !u!114 &2112395255124428816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6815074837522389699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fef40617e4cfcd49826e197c0a762e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 0
+  _image: {fileID: 5246213275441295378}
+  _startingHealth: 1

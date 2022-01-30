@@ -10,10 +10,11 @@ public class HealthHandler : MonoBehaviour
     protected float _minHealth = 0f;
     protected float _maxHealth;
 
-    public void Setup(StatsSO stats)
+    virtual public void Setup(StatsSO stats)
     {
         _health = stats.HealthStats.maxHealth;
         _maxHealth = stats.HealthStats.maxHealth;
+        UpdateHealthUI(0f);
     }
 
     virtual public bool TakeDamage(float damage)
