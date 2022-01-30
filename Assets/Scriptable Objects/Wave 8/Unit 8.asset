@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ececffda4976d54f91789e70d6c12ac, type: 3}
-  m_Name: Unit 3
+  m_Name: Unit 8
   m_EditorClassIdentifier: 
   Type: 0
   unitPrefab: {fileID: 183619689045447309, guid: 0f2f231335500ed419cd0c1b28c7d8f0,
     type: 3}
-  SpawnPosition: {x: 11.97, y: 6.55, z: 32}
+  SpawnPosition: {x: 34.26, y: -13.71, z: 111.6}
   NextSpawnDelay: 0.5
   HealthStats:
     maxHealth: 1

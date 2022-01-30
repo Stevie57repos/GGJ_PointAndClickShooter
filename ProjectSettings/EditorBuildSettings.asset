@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Win.unity
     guid: 5d9498283b4ece74ea9b69c87344a4b6
   - enabled: 0
-    path: Assets/Scenes/FiringTest.unity
+    path: Assets/Scenes/TutorialShoot.unity
     guid: 4e8a218695ee3274c920cfa69ad3763e
   - enabled: 0
     path: Assets/Scenes/CameraTrackTesting.unity

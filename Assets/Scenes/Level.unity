@@ -1325,6 +1325,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3fa8decfb53fd0840b80eff3dc763043, type: 2}
   - {fileID: 11400000, guid: f160806ded0fd1844913da5a99a2f79d, type: 2}
   - {fileID: 11400000, guid: 9fe1b9c07171ecd47b3efc79958c9d23, type: 2}
+  - {fileID: 11400000, guid: 9bf8f65cbd182ef408d6c9307dc2c48a, type: 2}
   _enemyDeathEventChannel: {fileID: 11400000, guid: a4908406dc5a5d94d9b8fdd9953339b1,
     type: 2}
   _clearedEnemyWaveEventChannel: {fileID: 11400000, guid: 47d9aed0d96086148b72167064ef227d,
@@ -2938,6 +2939,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+      objectReference: {fileID: 2100000, guid: 96f8fefc8ab723c458d759b1f3b51f8f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99b7d31b12460634692e3d0ee7bcec37, type: 3}

@@ -44,22 +44,35 @@ public class AllyController : MonoBehaviour, IInteractable
 
     public void LeftClick(float heal)
     {
-        _allyHealthHandler.TakeDamage(heal);
-        StartCoroutine(DamageVisualRoutine());
+        TakeDamage(heal);
+        print($"called");
+        //bool isAlive = _allyHealthHandler.TakeDamage(-heal);
+        //if (isAlive)
+        //{
+        //    StartCoroutine(DamageVisualRoutine());
+        //}
+        //else
+        //{
+        //    _allyDeathEventChannel.RaiseEvent();
+        //    _dissolver.DissolveOut(_dissolveTime);
+        //    StartCoroutine(AllyDeathRoutine());
+        //}
     }
 
     public void RightClick(float damage)
     {
-        bool isAlive = _allyHealthHandler.TakeDamage(damage);
-        if (isAlive)
-        {
-            StartCoroutine(DamageVisualRoutine());
-        }
-        else
-        {
-            // ally death;
-            this.gameObject.SetActive(false);
-        }
+        TakeDamage(damage);
+        print($"called");
+        //bool isAlive = _allyHealthHandler.TakeDamage(damage);
+        //if (isAlive)
+        //{
+        //    StartCoroutine(DamageVisualRoutine());
+        //}
+        //else
+        //{
+        //    // ally death;
+        //    this.gameObject.SetActive(false);
+        //}
     }
 
     private IEnumerator DamageVisualRoutine()

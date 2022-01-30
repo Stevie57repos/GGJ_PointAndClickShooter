@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20f83ca07db00af42b7fe3b4c0e8b85e, type: 3}
+  m_Name: Wave 8
+  m_EditorClassIdentifier: 
+  UnitList:
+  - {fileID: 11400000, guid: b9d7d5f8d9161484db8357f823d8b784, type: 2}
+  - {fileID: 11400000, guid: c3b6ce979d64f3440a63ce32af45b0a1, type: 2}
+  - {fileID: 11400000, guid: 144592c8957ff624380d1a4a9c38bdd8, type: 2}
+  - {fileID: 11400000, guid: d12fe1195b8a20c45b2d903ac68231a0, type: 2}
+  - {fileID: 11400000, guid: 251715dffb50efb4e9f7a4d9df23d7e6, type: 2}
+  - {fileID: 11400000, guid: d1f8077d5d08d8e4e842e5f8486996ed, type: 2}
+  - {fileID: 11400000, guid: 91b8875a48e01944ea691744d36e8bce, type: 2}
+  - {fileID: 11400000, guid: bb21605345fcee24c90d7c897a62e093, type: 2}
+  - {fileID: 11400000, guid: fd42f9c752f70ec4bb9dbbe635a17142, type: 2}
+  - {fileID: 11400000, guid: 144592c8957ff624380d1a4a9c38bdd8, type: 2}
+  - {fileID: 11400000, guid: d12fe1195b8a20c45b2d903ac68231a0, type: 2}
