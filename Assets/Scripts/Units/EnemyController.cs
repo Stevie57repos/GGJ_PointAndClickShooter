@@ -106,8 +106,10 @@ public class EnemyController : MonoBehaviour, IInteractable
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("OutsideFOV"))
-        {
+        { 
             _unitHealthHandler.TakeDamage(_unitHealthHandler.CurrentHealth());
+            _enemyDeathEventChannel.RaiseEvent(this);
+            Destroy(this.gameObject);
         }
     }
 }
