@@ -13,6 +13,16 @@ public class AllyController : MonoBehaviour, IInteractable
     private StatsSO _stats;
     Color originalColor;
 
+    [SerializeField]
+    private DissolveObject _dissolver;
+    [SerializeField]
+    private float _dissolveTime = 5f;
+
+    [Header("Event Channels")]
+    [SerializeField]
+    private AllyDeathEventSO _allyDeathEventChannel;
+    
+
     private void Awake()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
@@ -20,7 +30,12 @@ public class AllyController : MonoBehaviour, IInteractable
         _unitHealthHandler = GetComponent<UnitHealthHandler>();
         _unitHealthHandler.Setup(_stats);
     }
-    
+
+    private void Start()
+    {
+        _dissolver.DissolveIn(_dissolveTime);
+    }
+
     private void OnEnable()
     {
         _UICanvas.worldCamera = Camera.main;
@@ -55,8 +70,21 @@ public class AllyController : MonoBehaviour, IInteractable
 
     public void TakeDamage(float damage)
     {
-        _unitHealthHandler.TakeDamage(damage);
+        bool isAlive = _unitHealthHandler.TakeDamage(damage);
+        if (!isAlive)
+        {
+            _allyDeathEventChannel.RaiseEvent();
+            _dissolver.DissolveOut(_dissolveTime);
+            StartCoroutine(AllyDeathRoutine());
+        }        
     }
+
+    private IEnumerator AllyDeathRoutine()
+    {
+        yield return new WaitForSeconds(_dissolveTime);
+        Destroy(gameObject);
+    }
+
     public StatsSO GetStats()
     {
         return _stats;

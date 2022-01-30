@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour
     [Header("Event Channel")]
     [SerializeField]
     private PlayerLoseEventChannel _loseEventChannel;
+    [SerializeField]
+    private AllyDeathEventSO _allyDeathEventChannel;
 
     private void Awake()
     {
@@ -76,11 +78,13 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         _reload.performed += ReloadCheck;
+        _allyDeathEventChannel.AllyDeathEvent += AllyDeath;
     }
 
     private void OnDisable()
     {
         _reload.performed -= ReloadCheck;
+        _allyDeathEventChannel.AllyDeathEvent -= AllyDeath;
     }
 
     private void Update()
@@ -215,6 +219,11 @@ public class PlayerController : MonoBehaviour
     public void DebugTestPlayerDamage()
     {
         _healthHandler.TakeDamage(1f);
+    }
+
+    private void AllyDeath()
+    {
+        TakeDamage(1f);
     }
 
     public void TakeDamage(float damage)
