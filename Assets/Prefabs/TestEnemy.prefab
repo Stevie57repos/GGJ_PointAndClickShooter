@@ -357,6 +357,8 @@ MonoBehaviour:
   _enemyDeathEventChannel: {fileID: 11400000, guid: a4908406dc5a5d94d9b8fdd9953339b1,
     type: 2}
   _attackHandler: {fileID: 569757756}
+  _dissolver: {fileID: 8497638538299016523}
+  _dissolveTime: 0.5
 --- !u!114 &4339950569970897976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,6 +442,7 @@ GameObject:
   - component: {fileID: 527165334364508785}
   - component: {fileID: 5549646219843196311}
   - component: {fileID: 7743383927495716962}
+  - component: {fileID: 8497638538299016523}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -490,7 +493,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b9fd08e6087233140bb98f7ff712839e, type: 2}
+  - {fileID: 2100000, guid: 045120fcd9e799d4c8bea3a1bccc23aa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -512,6 +515,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8497638538299016523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4106494825016872215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eb35170e5285da46be6149863d8ea69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseStrength: 0.25
+  objectHeight: 1
+  material: {fileID: 0}
+  testValues: 0
 --- !u!1 &8448166855352227627
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,6 +18,10 @@ public class EnemyController : MonoBehaviour, IInteractable
 
     [SerializeField]
     private EnemyAttackHandler _attackHandler;
+    [SerializeField]
+    private DissolveObject _dissolver;
+    [SerializeField]
+    private float _dissolveTime;
 
     private void Awake()
     {
@@ -29,13 +33,13 @@ public class EnemyController : MonoBehaviour, IInteractable
 
     public void SetUp(Transform player)
     {
-        _attackHandler.Setup(_stats.AttackStats.Damage, player);
-        //_attackHandler.AttackPlayer();
+        _attackHandler.Setup(_stats.AttackStats.Damage, player);        
     }
 
     private void OnEnable()
     {
         _UICanvas.worldCamera = Camera.main;
+        _dissolver.DissolveIn(_dissolveTime);
     }
 
     public void LeftClick(float heal)
@@ -55,7 +59,7 @@ public class EnemyController : MonoBehaviour, IInteractable
         {
             _enemyDeathEventChannel.RaiseEvent(this);
             //this.gameObject.SetActive(false);
-            Destroy(this.gameObject);
+            EnemyDeath();
         }
     }
 
@@ -74,5 +78,24 @@ public class EnemyController : MonoBehaviour, IInteractable
     public StatsSO GetStats()
     {
         return _stats;
+    }
+
+    private void EnemyDeath()
+    {
+        _UICanvas.gameObject.SetActive(false);
+        StartCoroutine(EnemyDeathRoutine(_dissolveTime));
+    }
+
+    private IEnumerator EnemyDeathRoutine(float dissolveTime)
+    {
+        _dissolver.DissolveOut(dissolveTime);
+        yield return new WaitForSeconds(dissolveTime);
+        Destroy(this.gameObject);
+    }
+
+    [ContextMenu("Take Damage 1")]
+    public void TakeDamage1()
+    {
+        RightClick(1);
     }
 }
