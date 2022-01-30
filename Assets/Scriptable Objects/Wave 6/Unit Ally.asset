@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ececffda4976d54f91789e70d6c12ac, type: 3}
-  m_Name: Unit 2
+  m_Name: Unit Ally
   m_EditorClassIdentifier: 
-  Type: 0
-  unitPrefab: {fileID: 183619689045447309, guid: 0f2f231335500ed419cd0c1b28c7d8f0,
+  Type: 1
+  unitPrefab: {fileID: 6815074837522389699, guid: 77fc37228f64dbd468138488e51dfe88,
     type: 3}
-  SpawnPosition: {x: -26.24, y: -2.63, z: 118.27}
-  NextSpawnDelay: 0.5
+  SpawnPosition: {x: 10.42, y: -13.98, z: 147.6}
+  NextSpawnDelay: 3
   HealthStats:
-    maxHealth: 1
+    maxHealth: 4
   AttackStats:
-    Damage: 1
-    AttackChargeTime: 3
+    Damage: 0
+    AttackChargeTime: 0

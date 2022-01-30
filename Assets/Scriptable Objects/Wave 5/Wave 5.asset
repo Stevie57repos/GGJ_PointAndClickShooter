@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20f83ca07db00af42b7fe3b4c0e8b85e, type: 3}
-  m_Name: Wave 5 - Test
+  m_Name: Wave 5
   m_EditorClassIdentifier: 
   UnitList:
   - {fileID: 11400000, guid: fae29f5f9e939894f8ca6faaeedc8555, type: 2}
   - {fileID: 11400000, guid: caac14821f5f21141b2c0528d14f34f8, type: 2}
+  - {fileID: 11400000, guid: 16dbd376209afe142ad405e94c01e229, type: 2}
+  - {fileID: 11400000, guid: 8cd96b209d1fb024182c23a786e5f31c, type: 2}

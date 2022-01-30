@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 68926549}
   - component: {fileID: 68926548}
   - component: {fileID: 68926547}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 291821768}
   - component: {fileID: 291821767}
   - component: {fileID: 291821766}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1173,7 +1173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439dfc9ac00db0d458d5813c0bf6b1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _StartAtShootout: 3
+  _StartAtShootout: 0
   _player: {fileID: 560096714}
   _levelCamManager: {fileID: 846846581}
   _unitSpawnManager: {fileID: 846846584}
@@ -1323,6 +1323,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 94a78d527944b0d48aac7ecdc81a3ad5, type: 2}
   - {fileID: 11400000, guid: b9dcaea581b5279438be4d5a876cb1ea, type: 2}
   - {fileID: 11400000, guid: 3fa8decfb53fd0840b80eff3dc763043, type: 2}
+  - {fileID: 11400000, guid: f160806ded0fd1844913da5a99a2f79d, type: 2}
   _enemyDeathEventChannel: {fileID: 11400000, guid: a4908406dc5a5d94d9b8fdd9953339b1,
     type: 2}
   _clearedEnemyWaveEventChannel: {fileID: 11400000, guid: 47d9aed0d96086148b72167064ef227d,
@@ -1375,7 +1376,7 @@ GameObject:
   - component: {fileID: 981710830}
   - component: {fileID: 981710829}
   - component: {fileID: 981710828}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1520,7 +1521,7 @@ GameObject:
   - component: {fileID: 1190337271}
   - component: {fileID: 1190337270}
   - component: {fileID: 1190337269}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1633,7 +1634,7 @@ GameObject:
   - component: {fileID: 1212591453}
   - component: {fileID: 1212591455}
   - component: {fileID: 1212591456}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Truck
   m_TagString: Truck
   m_Icon: {fileID: 0}
@@ -1721,7 +1722,7 @@ GameObject:
   - component: {fileID: 1279996986}
   - component: {fileID: 1279996985}
   - component: {fileID: 1279996984}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1918,7 +1919,7 @@ GameObject:
   - component: {fileID: 1516319394}
   - component: {fileID: 1516319393}
   - component: {fileID: 1516319392}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2244,7 +2245,7 @@ GameObject:
   - component: {fileID: 1642647857}
   - component: {fileID: 1642647856}
   - component: {fileID: 1642647855}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2599,7 +2600,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894090277}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2764,7 +2765,7 @@ GameObject:
   - component: {fileID: 2096206274}
   - component: {fileID: 2096206273}
   - component: {fileID: 2096206272}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
