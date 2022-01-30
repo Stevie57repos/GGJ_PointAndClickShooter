@@ -136,6 +136,66 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 0d04e178939d90f40bbe70b4e8986ff6, type: 3}
+    - target: {fileID: 1258264968778808402, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258264968778808402, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258264968778808402, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258264968778808402, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258264968846407808, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258264968846407808, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258264968846407808, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258264968846407808, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258264970099846209, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258264970099846209, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258264970099846209, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258264970099846209, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5929525043935688161, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
         type: 3}
       propertyPath: m_RootOrder
@@ -370,7 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439dfc9ac00db0d458d5813c0bf6b1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _StartAtShootout: 0
+  _StartAtShootout: 1
   _player: {fileID: 560096714}
   _levelCamManager: {fileID: 846846581}
   _unitSpawnManager: {fileID: 846846584}

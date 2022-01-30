@@ -13,4 +13,9 @@ public class UnitHealthHandler : HealthHandler
         float healthPercent = _health / _maxHealth;
         _image.color = Color.Lerp(Color.red, Color.green, healthPercent);
     }
+
+    public float CurrentHealth()
+    {
+        return _health;
+    }
 }
