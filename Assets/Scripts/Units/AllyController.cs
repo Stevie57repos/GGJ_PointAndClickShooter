@@ -25,6 +25,7 @@ public class AllyController : MonoBehaviour, IInteractable
     {
         _UICanvas.worldCamera = Camera.main;
     }
+
     public void LeftClick(float heal)
     {
         _unitHealthHandler.TakeDamage(heal);
@@ -44,6 +45,7 @@ public class AllyController : MonoBehaviour, IInteractable
             this.gameObject.SetActive(false);
         }
     }
+
     private IEnumerator DamageVisualRoutine()
     {
         _meshRenderer.material.color = Color.yellow;

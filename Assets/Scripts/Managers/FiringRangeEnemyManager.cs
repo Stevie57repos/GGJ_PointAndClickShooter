@@ -8,6 +8,7 @@ public class FiringRangeEnemyManager : MonoBehaviour
     private EnemyController _enemyPrefab;
     [SerializeField]
     private AllyController _allyPrefab;
+
     [SerializeField]
     private Transform _enemySpawn;
     [SerializeField]

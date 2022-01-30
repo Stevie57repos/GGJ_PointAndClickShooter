@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyProjectile : MonoBehaviour
+public class EnemyProjectile : PoolableObject
 {
     private Rigidbody _rigidBody;
     private float _projectileDamage;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
-        if(_rigidBody == null)
+        base.OnEnable();
+        if (_rigidBody == null)
             _rigidBody = GetComponent<Rigidbody>();
     }
+
     public void LaunchProjectile(Vector3 targetPos, float damage, float projectileSpeed )
     {
         Vector3 direction = (targetPos - transform.position).normalized * projectileSpeed;
@@ -24,12 +26,12 @@ public class EnemyProjectile : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             other.transform.GetComponent<PlayerController>().TakeDamage(_projectileDamage);
-            Destroy(this.gameObject);
+            DisablePoolableObject();
         }
         else if (other.gameObject.CompareTag("Ally"))
         {
             other.transform.GetComponent<AllyController>().TakeDamage(_projectileDamage);
-            Destroy(this.gameObject);
+            DisablePoolableObject();
         }
     }
 }

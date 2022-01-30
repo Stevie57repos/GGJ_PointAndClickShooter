@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class UI_Menu : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject _mainMenuGO;
+    [SerializeField]
+    private GameObject _controlsGO;
+
     public void LoadLevel()
     {
         SceneManager.LoadScene("Level");
@@ -14,6 +19,19 @@ public class UI_Menu : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void OpenControlsUI()
+    {
+        _controlsGO.SetActive(true);
+        _mainMenuGO.SetActive(false);
+    }
+
+    public void CloseControlsUI()
+    {
+        _controlsGO.SetActive(false);
+        _mainMenuGO.SetActive(true);
+    }
+
     //public void QuitGame()
     //{
     //    Application.Quit();

@@ -260,7 +260,7 @@ PrefabInstance:
     - target: {fileID: 6675309449081742711, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
         type: 3}
       propertyPath: m_Position
-      value: 0
+      value: -0.98
       objectReference: {fileID: 0}
     - target: {fileID: 8253158336113449101, guid: f37d192089f5d6e4bbeb2a29dc0ac5ad,
         type: 3}
@@ -452,6 +452,7 @@ GameObject:
   - component: {fileID: 846846581}
   - component: {fileID: 846846582}
   - component: {fileID: 846846584}
+  - component: {fileID: 846846585}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -628,6 +629,21 @@ MonoBehaviour:
   _playerWinEventChannel: {fileID: 11400000, guid: 197f64e2e552ee64d8c47f5612f17ebe,
     type: 2}
   _isWaveSpawningComplete: 0
+--- !u!114 &846846585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846846578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3da9272410102d4e880ef505459445e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 4897911494624254554, guid: d460e6e516711054aa0e108e3ac33ef3,
+    type: 3}
+  _projectilePoolAmount: 10
 --- !u!1001 &1218775606
 PrefabInstance:
   m_ObjectHideFlags: 0

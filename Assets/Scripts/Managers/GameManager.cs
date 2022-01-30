@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class GameManager : MonoBehaviour
 {  
     [SerializeField]
@@ -19,8 +18,10 @@ public class GameManager : MonoBehaviour
     [Header("Event Channels")]
     [SerializeField]
     private PlayerWinEventSO _playerWinEventChannel;
+    private bool _isPlayerWin = false;
     [SerializeField]
     private PlayerLoseEventChannel _playerLoseEventChannel;
+    private bool _isPlayerLose = false;
     [SerializeField]
     private ClearedEnemyWaveEventSO _clearedEnemyWaveEventChannel;
     [SerializeField]
@@ -112,15 +113,21 @@ public class GameManager : MonoBehaviour
     [ContextMenu("Lose Now")]
     public void PlayerLose()
     {
+        // ensure the lose scene is only loaded once
+        if (_isPlayerLose) return;
         StopGame();
         SceneManager.LoadSceneAsync("Lose", LoadSceneMode.Additive);
+        _isPlayerLose = true;
     }
 
     [ContextMenu("Win Now")]
     public void PlayerWin()
-    {        
+    {
+        // ensure the win scene is only loaded once
+        if (!_isPlayerWin) return;
         SceneManager.LoadScene("Win", LoadSceneMode.Additive);
         StopGame();        
+        _isPlayerWin = true;
     }
 
     private void StopGame()
@@ -128,5 +135,4 @@ public class GameManager : MonoBehaviour
         _levelCamManager.Stop();
         _unitSpawnManager.Stop();
     }
-
 }

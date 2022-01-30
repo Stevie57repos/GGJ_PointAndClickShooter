@@ -191,9 +191,10 @@ GameObject:
   - component: {fileID: 6815074837522389698}
   - component: {fileID: 6815074837522389757}
   - component: {fileID: 6134747697731376674}
-  m_Layer: 0
+  - component: {fileID: 1982050497}
+  m_Layer: 9
   m_Name: FriendlyUnit
-  m_TagString: Untagged
+  m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -272,7 +273,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6815074837522389699}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -306,3 +307,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 0
   _image: {fileID: 5246213275441295378}
+--- !u!54 &1982050497
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6815074837522389699}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -42,11 +42,6 @@ public class EnemyAttackHandler : MonoBehaviour
             _meshRenderer = _targetingReticle.GetComponent<MeshRenderer>();
     }
 
-    private void Start()
-    {
-        Setup(1, GameObject.FindGameObjectWithTag("Player").transform);
-    }
-
     public void Setup(float damage, Transform player)
     {
         _attackDamage = damage;
@@ -65,7 +60,6 @@ public class EnemyAttackHandler : MonoBehaviour
         {
             transform.LookAt(_player);
             _target = _player;
-            print($"no targets found");
         }
         else
         {
@@ -99,11 +93,11 @@ public class EnemyAttackHandler : MonoBehaviour
 
             Color newColor = Color.Lerp(_startColor, _endColor, chargePercentage);
             _meshRenderer.material.color = newColor;
+            FindTarget();
             yield return null;
         }
-        EnemyProjectile projectile = Instantiate(_enemyProjectile);
-        projectile.transform.position = _bulletSpawnPoint.position;
-        projectile.LaunchProjectile(_target.position, _attackDamage, _projectileSpeed);
+
+        FireProjectile();
     }
 
     private IEnumerator BeginAttackRoutine()
@@ -118,11 +112,21 @@ public class EnemyAttackHandler : MonoBehaviour
         StopAllCoroutines();
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Color sphere = Color.yellow;
         sphere.a = 0.2f;
         Gizmos.color = sphere;
         Gizmos.DrawSphere(transform.position, _targetRangeCheck);
+    }
+
+    private void FireProjectile()
+    {
+        EnemyProjectile projectile = PoolSystem.GetNext(_enemyProjectile) as EnemyProjectile;
+        projectile.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        projectile.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        projectile.transform.position = _bulletSpawnPoint.position;
+        projectile.gameObject.SetActive(true);
+        projectile.LaunchProjectile(_target.position, _attackDamage, _projectileSpeed);
     }
 }

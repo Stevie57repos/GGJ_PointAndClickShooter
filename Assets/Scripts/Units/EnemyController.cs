@@ -75,5 +75,4 @@ public class EnemyController : MonoBehaviour, IInteractable
     {
         return _stats;
     }
-
 }

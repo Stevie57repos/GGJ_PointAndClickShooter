@@ -400,7 +400,6 @@ MonoBehaviour:
   _targetingReticle: {fileID: 1358236869}
   _startSize: 3
   _attackChargeDuration: 2
-  _player: {fileID: 0}
   _startColor: {r: 0.8962264, g: 0.66903484, b: 0, a: 1}
   _endColor: {r: 1, g: 0, b: 0, a: 1}
   _attackDelay: 0.5
@@ -409,6 +408,11 @@ MonoBehaviour:
   _attackDamage: 0
   _bulletSpawnPoint: {fileID: 1202337661}
   _projectileSpeed: 1000
+  _targetRangeCheck: 20
+  _allyUnitsLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  _colliders: []
 --- !u!54 &2201256040601553040
 Rigidbody:
   m_ObjectHideFlags: 0

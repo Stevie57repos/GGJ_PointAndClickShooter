@@ -27,10 +27,10 @@ EditorBuildSettings:
     path: Assets/Scenes/CameraTrackTesting.unity
     guid: 51e4a80a847a42049824c660182aa79b
   - enabled: 0
-    path: Assets/Scenes/Level - Test2.unity
+    path: Assets/Scenes/Level/Level - Test2.unity
     guid: 0033661ec1802364f8df53e4b70a505b
   - enabled: 0
-    path: Assets/Scenes/Level - Test.unity
+    path: Assets/Scenes/Level/Level - Test.unity
     guid: 545f423cb8f03b04ab4f920a7acda5c3
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f34b33dcf85f7bd429b72511d6210314,
