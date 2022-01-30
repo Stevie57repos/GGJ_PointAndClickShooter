@@ -629,6 +629,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenuGO: {fileID: 1037217052}
   _controlsGO: {fileID: 568135665}
+  _audioSource: {fileID: 0}
+  _menuClip: {fileID: 0}
+  _stopSoundEventChannel: {fileID: 11400000, guid: 448e36bbec031ac49b0013295447f4df,
+    type: 2}
 --- !u!114 &896348784
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -53,6 +53,10 @@ public class PlayerController : MonoBehaviour
     private bool _emptyClipPlayed = false;
     [SerializeField]
     private AudioClip _playerHurtClip;
+    [SerializeField]
+    private AudioSource _bgAudio;
+    [SerializeField]
+    private AudioSource _bgAmbientAudio;
 
     [Header("Health Settings")]
     [SerializeField]
@@ -67,6 +71,8 @@ public class PlayerController : MonoBehaviour
     private AllyDeathEventSO _allyDeathEventChannel;
     [SerializeField]
     private SoundEventChannelSO _soundEventChannel;
+    [SerializeField]
+    private StopSoundEventChannelSO _stopSoundEventChannel;
 
     private void Awake()
     {
@@ -89,12 +95,14 @@ public class PlayerController : MonoBehaviour
     {
         _reload.performed += ReloadCheck;
         _allyDeathEventChannel.AllyDeathEvent += AllyDeath;
+        _stopSoundEventChannel.StopSoundEvent += StopAudio;
     }
 
     private void OnDisable()
     {
         _reload.performed -= ReloadCheck;
         _allyDeathEventChannel.AllyDeathEvent -= AllyDeath;
+        _stopSoundEventChannel.StopSoundEvent -= StopAudio;
     }
 
     private void Update()
@@ -270,5 +278,11 @@ public class PlayerController : MonoBehaviour
 
         if (!isAlive)
             _loseEventChannel.RaiseEvent();
+    }
+
+    public void StopAudio()
+    {
+        _bgAmbientAudio.Stop();
+        _bgAudio.Stop();
     }
 }

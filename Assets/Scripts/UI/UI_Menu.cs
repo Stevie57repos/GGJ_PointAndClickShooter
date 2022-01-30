@@ -9,10 +9,21 @@ public class UI_Menu : MonoBehaviour
     private GameObject _mainMenuGO;
     [SerializeField]
     private GameObject _controlsGO;
+    [SerializeField]
+    private AudioSource _audioSource;
+    [SerializeField]
+    private AudioClip _menuClip;
+    [SerializeField]
+    private StopSoundEventChannelSO _stopSoundEventChannel;
 
     private void Awake()
     {
         Cursor.visible = true;
+    }
+
+    public void Start()
+    {
+        _stopSoundEventChannel.RaiseEvent();
     }
 
     public void LoadLevel()
