@@ -16,7 +16,7 @@ MonoBehaviour:
   unitPrefab: {fileID: 183619689045447309, guid: 0f2f231335500ed419cd0c1b28c7d8f0,
     type: 3}
   SpawnPosition: {x: 37.77, y: -13.71, z: 111.6}
-  NextSpawnDelay: 0.75
+  NextSpawnDelay: 1
   HealthStats:
     maxHealth: 1
   AttackStats:

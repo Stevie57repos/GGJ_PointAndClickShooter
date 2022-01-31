@@ -40,9 +40,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private bool hasReachedTargetPosition = false;
 
+
     private void Awake()
     {
-        _unitSpawnManager.Setup(_player);
+
     }
 
     private void Start()

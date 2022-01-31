@@ -44,8 +44,8 @@ public class AllyController : MonoBehaviour, IInteractable
 
     public void LeftClick(float heal)
     {
-        TakeDamage(heal);
-        print($"called");
+        //TakeDamage(heal);
+        //print($"called");
         //bool isAlive = _allyHealthHandler.TakeDamage(-heal);
         //if (isAlive)
         //{

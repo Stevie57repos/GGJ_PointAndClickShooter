@@ -21,6 +21,7 @@ public class UnitSpawnManager : MonoBehaviour
     private bool _isWaveSpawningComplete;
     private bool _isLastWave = false;
 
+    [SerializeField]
     private Transform _player;
 
     private void OnEnable()
