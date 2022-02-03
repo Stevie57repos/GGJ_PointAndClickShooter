@@ -1,7 +1,7 @@
 # GGJ_PointAndClickShooter
  Global Game Jam Vancouver 2022
 
-**Click on the image below to watch a YouTube gameplay Trailer**
+**Click on the image below to watch a 3-Minute Youtube Video on the process of creating this game**
 
 [![Header Image](https://github.com/Stevie57repos/GGJ_PointAndClickShooter/blob/main/Assets/Textures/TitleThumbnail.png)](https://youtu.be/3xvJcinyEOA)
 
